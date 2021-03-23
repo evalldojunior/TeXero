@@ -14,7 +14,7 @@ struct CardView: View {
     @State var degrees: Double = 0.0
     
     @ObservedObject var environment: GameEnvironment
-
+    
     @State var isPresented = false
     @Binding var leftOption: String
     @Binding var rightOption: String
@@ -25,7 +25,7 @@ struct CardView: View {
     @Binding var end : Bool
     private var card: JSONCard
     private var onRemove: (_ user: JSONCard) -> Void
-        
+    
     private var thresholdPercentage: CGFloat = 0.3 // when the user has draged 30% the width of the screen in either direction
     
     enum LeftRight: Int {
@@ -36,9 +36,9 @@ struct CardView: View {
         case back, front, none
     }
     
-
+    
     init(card: JSONCard, onRemove: @escaping (_ user: JSONCard) -> Void, environment: GameEnvironment, leftOption: Binding<String>, rightOption: Binding<String>, end: Binding<Bool>, isCardShowingBack: Binding<Bool>, leftButton: Binding<Bool>, rightButton: Binding<Bool>, pass: Binding<Bool>) {
-
+        
         self.card = card
         self.onRemove = onRemove
         
@@ -67,7 +67,7 @@ struct CardView: View {
     
     func getSideChoice(direction: LeftRight) -> Attributtes?{
         var sideChoice: Attributtes
-    
+        
         do {
             if(direction == .left){
                 sideChoice = try card.getResult(direction: .left)
@@ -78,9 +78,9 @@ struct CardView: View {
         }
         catch{
             print(error)
-        return nil
+            return nil
         }
-    
+        
     }
     
     func choice(direction: LeftRight){
@@ -148,8 +148,8 @@ struct CardView: View {
                                     .clipShape(Rectangle(), style: FillStyle())
                             }
                             .clipped()
-                           
-                                
+                            
+                            
                             Spacer()
                             VStack(alignment: .center, spacing: 0){
                                 Text("\(card.name)")
@@ -205,7 +205,7 @@ struct CardView: View {
                         }
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-
+                    
                     
                 } else if cardStatus == .back {
                     /// Card de Resposta
@@ -286,6 +286,8 @@ struct CardView: View {
                             cardStatus = .front
                             self.leftOption = card.leftText
                             self.rightOption = card.rightText
+                            
+                            FirebaseHandler.countRound += 1
                         }
                         
                     }
@@ -371,7 +373,7 @@ struct CardBackStatus: View {
     var imageStatus: String
     var arrowDegrees: Double
     var spacerFrameWidth: CGFloat
-        
+    
     var body: some View {
         GeometryReader { geometry in
             HStack{

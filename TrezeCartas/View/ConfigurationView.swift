@@ -51,11 +51,13 @@ struct ConfigurationView: View {
                                 .foregroundColor(.pretoColor)
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
-                            
                         }
                         //.padding()
                         .toggleStyle(SwitchToggleStyle(tint: Color.azulColor))
                         .frame(height: 55)
+                        .onChange(of: isAcessibilityOn, perform: { value in
+                            FirebaseHandler.registerAcessibilityButtonUseEvent()
+                        })
                         
                         Divider()
                         
@@ -113,6 +115,7 @@ struct ConfigurationView: View {
                             // pop to root
                             self.environment?.reset()
                             self.shouldPopToRootView = false
+                            FirebaseHandler.registerGaveUpGameEvent()
                         }, label: {
                             HStack {
                                 Spacer()

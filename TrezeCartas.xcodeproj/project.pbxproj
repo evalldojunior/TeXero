@@ -22,6 +22,9 @@
 		3E00D5F325F9290400BB0CC6 /* ExtensionClamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E00D5F225F9290400BB0CC6 /* ExtensionClamped.swift */; };
 		3E00D60725F92C4E00BB0CC6 /* ExtensionMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E00D60625F92C4E00BB0CC6 /* ExtensionMotion.swift */; };
 		3E1D712725FAAF80007A1A0E /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1D712625FAAF80007A1A0E /* ConfigurationView.swift */; };
+		3E33E6C42603EE7600280EA0 /* FirebaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E33E6C32603EE7600280EA0 /* FirebaseHandler.swift */; };
+		3E4A9D042603E80C00962B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E4A9D032603E80C00962B64 /* GoogleService-Info.plist */; };
+		3E4A9D0A2603E8A700962B64 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3E4A9D092603E8A700962B64 /* FirebaseAnalytics */; };
 		8908FAF325CDB48000D899D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908FAF225CDB48000D899D2 /* AppDelegate.swift */; };
 		8908FAF525CDB48000D899D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908FAF425CDB48000D899D2 /* SceneDelegate.swift */; };
 		8908FAFA25CDB48000D899D2 /* TrezeCartas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8908FAF825CDB48000D899D2 /* TrezeCartas.xcdatamodeld */; };
@@ -66,6 +69,8 @@
 		3E00D5F225F9290400BB0CC6 /* ExtensionClamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionClamped.swift; sourceTree = "<group>"; };
 		3E00D60625F92C4E00BB0CC6 /* ExtensionMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMotion.swift; sourceTree = "<group>"; };
 		3E1D712625FAAF80007A1A0E /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
+		3E33E6C32603EE7600280EA0 /* FirebaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandler.swift; sourceTree = "<group>"; };
+		3E4A9D032603E80C00962B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8908FAEF25CDB48000D899D2 /* TrezeCartas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrezeCartas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8908FAF225CDB48000D899D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8908FAF425CDB48000D899D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4A9D0A2603E8A700962B64 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				0894A10725D4B15C0007B370 /* GameEnvironment.swift */,
+				3E33E6C32603EE7600280EA0 /* FirebaseHandler.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -159,6 +166,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3E4A9D082603E8A700962B64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8908FAE625CDB48000D899D2 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +180,7 @@
 				8908FB0B25CDB48200D899D2 /* TrezeCartasTests */,
 				8908FB1625CDB48200D899D2 /* TrezeCartasUITests */,
 				8908FAF025CDB48000D899D2 /* Products */,
+				3E4A9D082603E8A700962B64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				8908FB0325CDB48200D899D2 /* Info.plist */,
+				3E4A9D032603E80C00962B64 /* GoogleService-Info.plist */,
 				8908FAF225CDB48000D899D2 /* AppDelegate.swift */,
 				8908FAF425CDB48000D899D2 /* SceneDelegate.swift */,
 				8908FAFB25CDB48200D899D2 /* Assets.xcassets */,
@@ -241,6 +257,7 @@
 			);
 			name = TrezeCartas;
 			packageProductDependencies = (
+				3E4A9D092603E8A700962B64 /* FirebaseAnalytics */,
 			);
 			productName = TrezeCartas;
 			productReference = 8908FAEF25CDB48000D899D2 /* TrezeCartas.app */;
@@ -335,6 +352,7 @@
 			files = (
 				8908FB0225CDB48200D899D2 /* LaunchScreen.storyboard in Resources */,
 				3568617725F15EEC00C2B261 /* TeXeroCards.txt in Resources */,
+				3E4A9D042603E80C00962B64 /* GoogleService-Info.plist in Resources */,
 				8908FAFF25CDB48200D899D2 /* Preview Assets.xcassets in Resources */,
 				8908FAFC25CDB48200D899D2 /* Assets.xcassets in Resources */,
 			);
@@ -362,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8908FAFA25CDB48000D899D2 /* TrezeCartas.xcdatamodeld in Sources */,
+				3E33E6C42603EE7600280EA0 /* FirebaseHandler.swift in Sources */,
 				3E1D712725FAAF80007A1A0E /* ConfigurationView.swift in Sources */,
 				3E00D5EE25F928A000BB0CC6 /* ExtensionCornerRadius.swift in Sources */,
 				0872A21325D30C0C00E2A466 /* Card.swift in Sources */,
@@ -728,6 +747,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3E4A9D092603E8A700962B64 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E00D61A25F935B500BB0CC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8908FAF825CDB48000D899D2 /* TrezeCartas.xcdatamodeld */ = {

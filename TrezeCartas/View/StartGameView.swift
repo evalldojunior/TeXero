@@ -58,7 +58,6 @@ struct StartGameView: View {
                                     .frame(minHeight: 25)
                                     .frame(height: UIScreen.main.bounds.height*0.035)
                                     .foregroundColor(Color.roxoClaroColor)
-                                    //.padding(6)
                             })
                             .padding()
                             .padding(.top, UIScreen.main.bounds.height > 800 ? UIScreen.main.bounds.height*0.02 : 0)

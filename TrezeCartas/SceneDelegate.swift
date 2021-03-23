@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,6 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
+            FirebaseApp.configure()
+            
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = HostingController(rootView: contentView)
             self.window = window
@@ -39,6 +42,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        if !FirebaseHandler.finishedGame {
+            FirebaseHandler.registerGaveUpGameEvent()
+        }
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

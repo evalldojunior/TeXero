@@ -30,7 +30,9 @@ struct GameView: View {
     @State var showConfig = false
     
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
-    
+    @AppStorage("userAlreadyWon") var userAlreadyWon: Bool = false
+    @AppStorage("attemptsToWin") var attemptsToWin: Int = 0
+
     /// Return the CardViews width for the given offset in the array
     /// - Parameters:
     ///   - geometry: The geometry proxy of the parent
@@ -88,17 +90,27 @@ struct GameView: View {
                                         // Remove that card from our array
                                         if end {
                                             self.isPresentedGameOver.toggle()
-                                            
                                             UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_once_key")
-                                            //self.environment.reset()
+                                            FirebaseHandler.finishedGame = true
+                                            self.attemptsToWin += 1
                                         } else {
                                             environment.changeCardPriority()
                                             
                                             if environment.maxID == 0 {
                                                 self.isPresentedFinished.toggle()
-                                                
                                                 UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_once_key")
-                                                //self.environment.reset()
+                                                
+                                                FirebaseHandler.finishedGame = true
+
+                                                self.attemptsToWin += 1
+                                                
+                                                if !self.userAlreadyWon {
+                                                    FirebaseHandler.registerWinFirstTimeEvent()
+                                                }
+                                                
+                                                self.userAlreadyWon = true
+                                                
+                                                
                                             }
                                             else{
                                                 self.environment.cards.removeLast()
@@ -130,6 +142,7 @@ struct GameView: View {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                         self.areButtonsActive = true
                                     }
+                                                                        
                                 }, label: {
                                     HStack {
                                         Spacer()
@@ -159,6 +172,7 @@ struct GameView: View {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                         self.areButtonsActive = true
                                     }
+                                                                        
                                 }, label: {
                                     HStack {
                                         Spacer()
@@ -232,7 +246,6 @@ struct GameView: View {
                     .opacity(environment.maxID < 17 ? 1 : 0)
                     .animation(.easeInOut(duration: 0.6))
                     .opacity(end ? 0 : 1)
-                    //Spacer()
                 }
                 .blur(radius: CGFloat(environment.attributes.insanityStats!)/2)
                 
@@ -249,7 +262,6 @@ struct GameView: View {
                                 .frame(minHeight: 25)
                                 .frame(height: UIScreen.main.bounds.height*0.035)
                                 .foregroundColor(Color.roxoClaroColor)
-                            //.padding(6)
                         })
                         .padding(.top)
                         .padding(.top, UIScreen.main.bounds.height > 800 ? UIScreen.main.bounds.height*0.02 : 0)
@@ -291,15 +303,12 @@ struct GameView: View {
         .navigationTitle(Text(""))
         .navigationBarBackButtonHidden(end ? true : false)
         .preferredColorScheme(.light)
-        //.blur(radius: CGFloat(environment.attributes.insanityStats!)/2)
         .padding()
         .background(Color.brancoColor)
         .edgesIgnoringSafeArea(.all)
         .onReceive(NotificationCenter.default.publisher(for: .deviceDidShakeNotification)) { _ in
-            //self.drugs += 1
             if !end {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                //self.environment.attributes.insanityStats! += 1
                 self.environment.setStatusShake()
             }
             if environment.attributes.insanityStats! == 10 {
