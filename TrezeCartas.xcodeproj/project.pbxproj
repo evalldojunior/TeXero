@@ -10,6 +10,7 @@
 		0872A21325D30C0C00E2A466 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0872A21225D30C0C00E2A466 /* Card.swift */; };
 		08831D9325D1DB810090D3E9 /* ExtensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08831D9225D1DB810090D3E9 /* ExtensionColor.swift */; };
 		0894A10825D4B15C0007B370 /* GameEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894A10725D4B15C0007B370 /* GameEnvironment.swift */; };
+		08966255260D278200C7E18A /* MenuDecksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08966254260D278200C7E18A /* MenuDecksView.swift */; };
 		08CA4FB625D4955400BFE2BE /* EndGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA4FB525D4955400BFE2BE /* EndGameView.swift */; };
 		08CA4FBB25D4A39E00BFE2BE /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA4FBA25D4A39E00BFE2BE /* StartGameView.swift */; };
 		08EEAD9F25D44162002461DF /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EEAD9E25D44162002461DF /* ProgressBarView.swift */; };
@@ -54,6 +55,7 @@
 		0872A21225D30C0C00E2A466 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		08831D9225D1DB810090D3E9 /* ExtensionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionColor.swift; sourceTree = "<group>"; };
 		0894A10725D4B15C0007B370 /* GameEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnvironment.swift; sourceTree = "<group>"; };
+		08966254260D278200C7E18A /* MenuDecksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDecksView.swift; sourceTree = "<group>"; };
 		08CA4FB525D4955400BFE2BE /* EndGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameView.swift; sourceTree = "<group>"; };
 		08CA4FBA25D4A39E00BFE2BE /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		08EEAD9E25D44162002461DF /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				08EEAD9E25D44162002461DF /* ProgressBarView.swift */,
 				08EFE00325CF3BCD00086BFB /* ShakeGestureView.swift */,
 				08CA4FBA25D4A39E00BFE2BE /* StartGameView.swift */,
+				08966254260D278200C7E18A /* MenuDecksView.swift */,
 				3E1D712625FAAF80007A1A0E /* ConfigurationView.swift */,
 			);
 			path = View;
@@ -370,6 +373,7 @@
 				3E00D5F325F9290400BB0CC6 /* ExtensionClamped.swift in Sources */,
 				08CA4FB625D4955400BFE2BE /* EndGameView.swift in Sources */,
 				8908FAF325CDB48000D899D2 /* AppDelegate.swift in Sources */,
+				08966255260D278200C7E18A /* MenuDecksView.swift in Sources */,
 				08831D9325D1DB810090D3E9 /* ExtensionColor.swift in Sources */,
 				89A8E99025D5BAD3005868A8 /* FinalGameView.swift in Sources */,
 				8908FAF525CDB48000D899D2 /* SceneDelegate.swift in Sources */,
