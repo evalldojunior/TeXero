@@ -24,6 +24,8 @@ class GameEnvironment: ObservableObject {
     
     init(){
         
+        //AudioPreview.shared.backgroundPlayer!.play()
+        
         attributes = Attributtes()
 
         reset()
@@ -31,6 +33,7 @@ class GameEnvironment: ObservableObject {
     }
     
     func reset() {
+        
         attributes = Attributtes()
         
         guard let jsonPath = Bundle.main.path(forResource: "TeXeroCards", ofType: "txt") else { fatalError() }
@@ -76,6 +79,8 @@ class GameEnvironment: ObservableObject {
     
     func changeEnvironment(result: Attributtes){
         
+        AudioPreview.shared.play(name: "card_flip", volume: 0.2, delay: 0)
+        
         if let endGame = result.endGame{
             self.attributes.endGame = endGame
         }
@@ -108,8 +113,9 @@ class GameEnvironment: ObservableObject {
     
     
     func changeCardPriority(){
-        //print("My environment")
-        //print(self.attributes)
+        
+        //AudioPreview.shared.play(name: "card_flip", volume: 0.14, delay: 0)
+        
         if self.attributes.dependsFrom != nil{
             if let card = self.allCards.first(where: {
                 $0.uid == self.attributes.dependsFrom
@@ -190,7 +196,7 @@ class GameEnvironment: ObservableObject {
     }
     
     func setStatusShake() {
-
+        AudioPreview.shared.play(name: "latinha", volume: 0.2, delay: 0)
         switch Double.random(in: 0...100) {
         case 0..<29:
             self.attributes.healthStats! += 1
