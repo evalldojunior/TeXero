@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConfigurationView: View {
     
-    @Binding var shouldPopToRootView : Bool
+    @Binding var gameViewIsActive : Bool
     @Binding var showConfig: Bool
     
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
@@ -66,14 +66,14 @@ struct ConfigurationView: View {
                                 .foregroundColor(.pretoColor)
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
-                                .opacity(0.4)
+                                //.opacity(0.4)
                             
                         }
                         //.padding()
                         .toggleStyle(SwitchToggleStyle(tint: Color.azulColor))
                         .frame(height: 55)
-                        .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                        .opacity(0.7)
+                        //.disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        //.opacity(0.7)
                         
                     }.padding(.horizontal)
                     .padding(.vertical, 6)
@@ -112,7 +112,9 @@ struct ConfigurationView: View {
                         Button(action: {
                             // pop to root
                             self.environment?.reset()
-                            self.shouldPopToRootView = false
+                            print(gameViewIsActive)
+                            self.gameViewIsActive = false
+                            print(gameViewIsActive)
                         }, label: {
                             HStack {
                                 Spacer()

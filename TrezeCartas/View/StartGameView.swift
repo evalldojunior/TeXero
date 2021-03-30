@@ -19,9 +19,7 @@ struct StartGameView: View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .bottom){
-                    
-                    NavigationLink(destination: GameView(rootIsActive: self.$isPresented), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
-                    
+                    NavigationLink(destination: GameView(rootIsActive: self.$isPresented, deck: "TeXeroNa13"), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
                     
                     VStack{
                         Spacer()
@@ -70,7 +68,7 @@ struct StartGameView: View {
                     /// config
                     VStack {
                         Spacer()
-                        ConfigurationView(shouldPopToRootView: .constant(false), showConfig: $showConfig, isPause: false)
+                        ConfigurationView(gameViewIsActive: .constant(false), showConfig: $showConfig, isPause: false)
                             .offset(y: self.showConfig ? 0 : UIScreen.main.bounds.height)
                             .padding()
                             //.padding(.bottom)
@@ -88,6 +86,7 @@ struct StartGameView: View {
                 .onTapGesture {
                     if !showConfig {
                         self.isPresented.toggle()
+                        
                         AudioPreview.shared.play(name: "card_shuffle", volume: 0.2, delay: 0.5)
                     }
                 }

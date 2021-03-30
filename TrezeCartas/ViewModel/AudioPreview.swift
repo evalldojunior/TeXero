@@ -6,6 +6,7 @@
 //
 
 import AVKit
+import SwiftUI
 
 class AudioPreview{
     static var shared = AudioPreview()
@@ -13,6 +14,8 @@ class AudioPreview{
     var backgroundPlayer: AVAudioPlayer?
     
     var actionPlayer: AVAudioPlayer?
+    
+    @AppStorage("sound") var isSoundOn : Bool = false
     
     init(){
         guard let url = Bundle.main.url(forResource: "background_sound", withExtension: "wav") else {
@@ -34,24 +37,27 @@ class AudioPreview{
     }
     
     func play(name: String, volume: Float, delay: Double){
-        
-        guard let url = Bundle.main.url(forResource: name, withExtension: "wav") else {
-            print("No file with specified name exists")
-            return }
-        
-        do{
-            try AVAudioSession.sharedInstance().setCategory(.ambient)
-            
-            actionPlayer = try AVAudioPlayer(contentsOf: url)
-            actionPlayer!.prepareToPlay()
-            actionPlayer!.volume = volume
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                self.actionPlayer!.play()
+
+        if isSoundOn {
+            guard let url = Bundle.main.url(forResource: name, withExtension: "wav") else {
+                print("No file with specified name exists")
+                return 
             }
-        }
-        catch{
-            print(error)
+            
+            do{
+                try AVAudioSession.sharedInstance().setCategory(.ambient)
+                
+                actionPlayer = try AVAudioPlayer(contentsOf: url)
+                actionPlayer!.prepareToPlay()
+                actionPlayer!.volume = volume
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    self.actionPlayer!.play()
+                }
+            }
+            catch{
+                print(error)
+            }
         }
     }
 

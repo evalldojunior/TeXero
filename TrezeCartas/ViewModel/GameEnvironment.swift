@@ -13,35 +13,33 @@ class GameEnvironment: ObservableObject {
     
     var allCards: [JSONCard] = []
     
-    @Published var cards: [JSONCard] = []//(0...15).map{_ in JSONCard.placebo()}
+    @Published var cards: [JSONCard] = []
     @Published var maxID = 14
     
     @Published var attributes: Attributtes
     
     var blockEndingText: String = ""
-    
-    
+    var currentDeck : String? {
+        didSet{
+            self.reset()
+        }
+    }
     
     init(){
-        
-        //AudioPreview.shared.backgroundPlayer!.play()
-        
+        //AudioPreview.shared.backgroundPlayer!.play()        
         attributes = Attributtes()
-
-        reset()
-        
+        //reset()
     }
     
     func reset() {
         
         attributes = Attributtes()
-        
-        guard let jsonPath = Bundle.main.path(forResource: "TeXeroCards", ofType: "txt") else { fatalError() }
+                
+        guard let jsonPath = Bundle.main.path(forResource: currentDeck!, ofType: "txt") else { return /*fatalError()*/ }
 
         do {
             let jsonData = try String(contentsOfFile: jsonPath, encoding: String.Encoding.utf8).data(using: String.Encoding.utf8)!
             allCards = try JSONDecoder().decode([JSONCard].self, from: jsonData)
-            
             
             let initialCard: JSONCard
             let idToAdd: Int
@@ -53,7 +51,6 @@ class GameEnvironment: ObservableObject {
                 initialCard = allCards.first(where: {$0.uid == 0})!
                 idToAdd = 4
             }
-            
             
             maxID = 15 + idToAdd
             
@@ -106,31 +103,25 @@ class GameEnvironment: ObservableObject {
         
         self.attributes.dependsFrom = result.dependsFrom
         
-
         
     }
     
-    
     func changeCardPriority(){
-        
         //AudioPreview.shared.play(name: "card_flip", volume: 0.14, delay: 0)
-        
-        if self.attributes.dependsFrom != nil{
+
+      if self.attributes.dependsFrom != nil{
             if let card = self.allCards.first(where: {
                 $0.uid == self.attributes.dependsFrom
             }){
                 print(self.attributes)
-                //print("Índice Selecionado (FAST)", card.uid, ", Carta: ", card.name)
                 self.maxID -= 1
                 cards[maxID].change(new: card)
 
                 self.attributes.dependsFrom = nil
                 self.objectWillChange.send()
-                //print("all cards antes (fast): ", allCards.map{$0.uid}.sorted())
                 allCards.removeAll(where: {cardToRemove in
                     cardToRemove.uid == card.uid
                 })
-                //print("all cards depois (fast): ", allCards.map{$0.uid}.sorted())
             }
             else{
                 self.maxID -= 1
@@ -138,7 +129,6 @@ class GameEnvironment: ObservableObject {
             }
             return
         }
-        //print("all cards count: ", allCards.count)
         var cardPriority: [(JSONCard, Double)] = allCards.filter{$0.dependsFrom == nil}.map{ card in
             return(card, 1)
         }
@@ -162,15 +152,12 @@ class GameEnvironment: ObservableObject {
         }
         
         if let selectedIndex = randomNumber(probabilities: cardPriority.map{$0.1}){
-            //print("Índice Selecionado ", cardPriority[selectedIndex].0.uid, ", Carta: ", cardPriority[selectedIndex].0.name)
             self.maxID -= 1
             cards[maxID].change(new: cardPriority[selectedIndex].0)
 
-            //print("all cards antes: ", allCards.map{$0.uid}.sorted())
             allCards.removeAll(where: {cardToRemove in
                 cardToRemove.uid == cardPriority[selectedIndex].0.uid
             })
-            //print("all cards depois: ", allCards.map{$0.uid}.sorted())
             self.objectWillChange.send()
         }
             
@@ -178,11 +165,8 @@ class GameEnvironment: ObservableObject {
     
     func randomNumber(probabilities: [Double]) -> Int? {
         if probabilities.count == 0{ return nil}
-        // Sum of all probabilities (so that we don't have to require that the sum is 1.0):
         let sum = probabilities.reduce(0, +)
-        // Random number in the range 0.0 <= rnd < sum :
         let rnd = Double.random(in: 0.0 ..< sum)
-        // Find the first interval of accumulated probabilities into which `rnd` falls:
         var accum = 0.0
         for (i, p) in probabilities.enumerated() {
             accum += p
@@ -190,7 +174,6 @@ class GameEnvironment: ObservableObject {
                 return i
             }
         }
-        // This point might be reached due to floating point inaccuracies:
         return (probabilities.count - 1)
     }
     
@@ -211,7 +194,5 @@ class GameEnvironment: ObservableObject {
         }
         
         self.attributes.insanityStats! += 1
-    
     }
-    
 }

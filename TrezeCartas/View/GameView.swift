@@ -29,7 +29,15 @@ struct GameView: View {
     @State var areButtonsActive = true
     @State var showConfig = false
     
+    init(rootIsActive: Binding<Bool>, deck: String) {
+        self._rootIsActive = rootIsActive
+        
+        self.environment.currentDeck = deck
+        self.environment.objectWillChange.send()
+    }
+    
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
+    @AppStorage("sound") var isSoundOn : Bool = false
     
     /// Return the CardViews width for the given offset in the array
     /// - Parameters:
@@ -263,7 +271,7 @@ struct GameView: View {
                 /// config / pause
                 VStack {
                     Spacer()
-                    ConfigurationView(shouldPopToRootView: $rootIsActive, showConfig: $showConfig, environment: environment, isPause: true)
+                    ConfigurationView(gameViewIsActive: $rootIsActive, showConfig: $showConfig, environment: environment, isPause: true)
                         .offset(y: self.showConfig ? 0 : UIScreen.main.bounds.height)
                         .padding(.bottom)
                         .padding(.bottom) // sao dois mesmo hehe
@@ -299,7 +307,6 @@ struct GameView: View {
             //self.drugs += 1
             if !end {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                //self.environment.attributes.insanityStats! += 1
                 self.environment.setStatusShake()
             }
             if environment.attributes.insanityStats! == 10 {
@@ -318,16 +325,16 @@ struct GameView_PreviewProvider: PreviewProvider{
     @State static var active = false
     
     static var previews: some View{
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPod touch (7th generation)"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
