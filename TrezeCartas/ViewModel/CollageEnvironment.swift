@@ -29,7 +29,7 @@ class CollageEnvironment: ObservableObject {
                 }
             } else {
                 areCardsDiscovered = cards.map{ card in
-                    return [true, true, false].randomElement()!
+                    return false
                 }
             }
             
