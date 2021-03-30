@@ -12,7 +12,8 @@ struct MenuDecksView: View {
     @State var isPresented = false
     @Namespace var namespace
     @State var showConfig = false
-    var allDecks: [String] = ["TeXeroNa13", "TeXeroNa13", "none"]
+    var allDecks: [String] = ["TeXeroNa13", "none"]
+    
     
     var body: some View {
         NavigationView {

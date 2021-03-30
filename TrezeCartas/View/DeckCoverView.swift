@@ -55,6 +55,7 @@ struct DeckCoverView: View {
         .saturation(self.deckName == "none" ? 0 : 1)
         .onTapGesture {
             if self.deckName != "none" {
+                AudioPreview.shared.play(name: "card_shuffle", volume: 0.2, delay: 0.0)
                 self.isPresented.toggle()
             }
         }

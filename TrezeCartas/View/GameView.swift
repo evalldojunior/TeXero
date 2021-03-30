@@ -37,6 +37,7 @@ struct GameView: View {
     }
     
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
+    @AppStorage("sound") var isSoundOn : Bool = false
     
     /// Return the CardViews width for the given offset in the array
     /// - Parameters:
@@ -306,7 +307,6 @@ struct GameView: View {
             //self.drugs += 1
             if !end {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                //self.environment.attributes.insanityStats! += 1
                 self.environment.setStatusShake()
             }
             if environment.attributes.insanityStats! == 10 {

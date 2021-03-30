@@ -14,6 +14,7 @@ struct CardView: View {
     @State var degrees: Double = 0.0
     
     @ObservedObject var environment: GameEnvironment
+    @AppStorage("sound") var isSoundOn : Bool = false
 
     @State var isPresented = false
     @Binding var leftOption: String
