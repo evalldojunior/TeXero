@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-class Attributtes: Codable, ReflectedStringConvertible, CustomStringConvertible{
+class Attributtes: Codable, Identifiable, ReflectedStringConvertible, CustomStringConvertible {
+    
     
     var healthStats: Int?
     var moneyStats: Int?

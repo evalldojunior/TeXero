@@ -103,7 +103,6 @@ class GameEnvironment: ObservableObject {
         
         self.attributes.dependsFrom = result.dependsFrom
         
-        //changeCardPriority()
         
     }
     

@@ -37,10 +37,12 @@ class AudioPreview{
     }
     
     func play(name: String, volume: Float, delay: Double){
+
         if isSoundOn {
             guard let url = Bundle.main.url(forResource: name, withExtension: "wav") else {
                 print("No file with specified name exists")
-                return }
+                return 
+            }
             
             do{
                 try AVAudioSession.sharedInstance().setCategory(.ambient)

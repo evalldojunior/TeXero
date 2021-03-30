@@ -102,6 +102,15 @@ struct CardView: View {
         }
         self.environment.changeEnvironment(result: sideChoice!)
         
+        if var discoveredCards = UserDefaults.standard.array(forKey: "has_discovered_cards_key") as? [Int] {
+            if !discoveredCards.contains(card.uid) {
+                discoveredCards.append(card.uid)
+                UserDefaults.standard.setValue(discoveredCards, forKey: "has_discovered_cards_key")
+            }
+        } else {
+            UserDefaults.standard.setValue([] as! [Int], forKey: "has_discovered_cards_key")
+        }
+        
         if environment.attributes.healthStats! == 0 || environment.attributes.moneyStats! == 0 || environment.attributes.insanityStats! == 10 {
             self.end.toggle()
         }
