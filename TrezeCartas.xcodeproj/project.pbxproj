@@ -78,7 +78,7 @@
 		3508A8BA260D18F50069A9DF /* card_shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = card_shuffle.wav; sourceTree = "<group>"; };
 		3508A8BF260D18FB0069A9DF /* card_flip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = card_flip.wav; sourceTree = "<group>"; };
 		3544852A261242E1009B3983 /* latinha.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = latinha.wav; sourceTree = "<group>"; };
-		3568617625F15EEC00C2B261 /* TeXeroNa13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TeXeroCards.txt; sourceTree = "<group>"; };
+		3568617625F15EEC00C2B261 /* TeXeroNa13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TeXeroNa13.txt; sourceTree = "<group>"; };
 		35CF7C5D25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionReflectedStringConvertible.swift; sourceTree = "<group>"; };
 		3E00D5ED25F928A000BB0CC6 /* ExtensionCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCornerRadius.swift; sourceTree = "<group>"; };
 		3E00D5F225F9290400BB0CC6 /* ExtensionClamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionClamped.swift; sourceTree = "<group>"; };
