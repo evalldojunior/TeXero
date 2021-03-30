@@ -19,17 +19,22 @@ class GameEnvironment: ObservableObject {
     @Published var attributes: Attributtes
     
     var blockEndingText: String = ""
-    
+    var allDecks : [String] = ["TeXeroCards", "None"]
+    var currentDeck : String? {
+        didSet{
+            self.reset()
+        }
+    }
     
     init(){
         attributes = Attributtes()
-        reset()
+        //reset()
     }
     
     func reset() {
         attributes = Attributtes()
         
-        guard let jsonPath = Bundle.main.path(forResource: "TeXeroCards", ofType: "txt") else { fatalError() }
+        guard let jsonPath = Bundle.main.path(forResource: currentDeck!, ofType: "txt") else { return /*fatalError()*/ }
 
         do {
             let jsonData = try String(contentsOfFile: jsonPath, encoding: String.Encoding.utf8).data(using: String.Encoding.utf8)!

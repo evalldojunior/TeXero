@@ -13,25 +13,24 @@ struct MenuDecksView: View {
     @State var isPresented = false
     @Namespace var namespace
     @State var showConfig = false
+    //@State var selection: Int? = nil
+    //var selection2: Int = 2
     //@ObservedObject var environment: GameEnvironment
+    @ObservedObject var environment = GameEnvironment()
+    
     
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .center){
                     
-                    NavigationLink(destination: GameView(rootIsActive: self.$isPresented), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
+                    //NavigationLink(destination: GameView(rootIsActive: self.$isPresented), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
+                    //NavigationLink(destination: GameView(rootIsActive: self.$isPresented), tag: selection2, selection: $selection){EmptyView()}.isDetailLink(false)
                     
                     VStack {
-                        LazySnapHStack(data: [1, 2]){ item in
-                            DeckCoverView()
-                            .onTapGesture {
-                                if !showConfig {
-                                    // Definir qual deck foi clicado
-                                    // ...
-                                    self.isPresented.toggle()
-                                }
-                            }
+                        LazySnapHStack(data: environment.allDecks){ deck in
+                            DeckCoverView(isPresented: $isPresented)
+                            
                         }
                         Spacer().frame(height: 50)
                     }
@@ -147,7 +146,7 @@ struct MenuDecksView: View {
                     /// Config
                     VStack {
                         Spacer()
-                        ConfigurationView(shouldPopToRootView: .constant(false), showConfig: $showConfig, isPause: false)
+                        ConfigurationView(gameViewIsActive: .constant(false), showConfig: $showConfig, isPause: false)
                             .offset(y: self.showConfig ? 0 : UIScreen.main.bounds.height)
                             .padding()
                     }

@@ -70,7 +70,7 @@ struct StartGameView: View {
                     /// config
                     VStack {
                         Spacer()
-                        ConfigurationView(shouldPopToRootView: .constant(false), showConfig: $showConfig, isPause: false)
+                        ConfigurationView(gameViewIsActive: .constant(false), showConfig: $showConfig, isPause: false)
                             .offset(y: self.showConfig ? 0 : UIScreen.main.bounds.height)
                             .padding()
                             //.padding(.bottom)
