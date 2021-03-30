@@ -29,11 +29,11 @@ struct GameView: View {
     @State var areButtonsActive = true
     @State var showConfig = false
     
-    var deck: String = "" {
-        didSet {
-            self.environment.currentDeck = self.deck
-            self.environment.objectWillChange.send()
-        }
+    init(rootIsActive: Binding<Bool>, deck: String) {
+        self._rootIsActive = rootIsActive
+        
+        self.environment.currentDeck = deck
+        self.environment.objectWillChange.send()
     }
     
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
@@ -325,16 +325,16 @@ struct GameView_PreviewProvider: PreviewProvider{
     @State static var active = false
     
     static var previews: some View{
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPod touch (7th generation)"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }

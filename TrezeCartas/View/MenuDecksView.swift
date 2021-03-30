@@ -12,15 +12,12 @@ struct MenuDecksView: View {
     @State var isPresented = false
     @Namespace var namespace
     @State var showConfig = false
-    var allDecks: [String] = ["TeXeroNa13", "none"]
+    var allDecks: [String] = ["TeXeroNa13", "TeXeroNa13", "none"]
     
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .center){
-                    
-                    //NavigationLink(destination: GameView(rootIsActive: self.$isPresented), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
-                    //NavigationLink(destination: GameView(rootIsActive: self.$isPresented), tag: selection2, selection: $selection){EmptyView()}.isDetailLink(false)
                     
                     VStack {
                         LazySnapHStack(data: allDecks){ deck in
@@ -62,7 +59,7 @@ struct MenuDecksView: View {
                             Spacer()
                             
                             Button(action: {
-                                // Abrir tela de conquistas
+                                // Abrir tela de coleção
                             }, label: {
                                 ZStack {
                                     Rectangle()

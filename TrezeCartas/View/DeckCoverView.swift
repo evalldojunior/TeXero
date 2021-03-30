@@ -17,8 +17,9 @@ struct DeckCoverView: View {
             VStack(alignment: .center) {
                 ZStack {
                     
-                    NavigationLink(destination: GameView(rootIsActive: self.$isPresented, deck: deckName), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
-                    
+                    if deckName != "none" {
+                        NavigationLink(destination: GameView(rootIsActive: self.$isPresented, deck: deckName), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
+                    }
                     
                     CardArt(complete: true)
                     

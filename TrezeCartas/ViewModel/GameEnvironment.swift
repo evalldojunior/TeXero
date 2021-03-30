@@ -32,9 +32,7 @@ class GameEnvironment: ObservableObject {
     
     func reset() {
         attributes = Attributtes()
-        
-        print(self.currentDeck!)
-        
+                
         guard let jsonPath = Bundle.main.path(forResource: currentDeck!, ofType: "txt") else { return /*fatalError()*/ }
 
         do {
