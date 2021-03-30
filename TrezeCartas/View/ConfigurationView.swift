@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConfigurationView: View {
     
-    @Binding var shouldPopToRootView : Bool
+    @Binding var gameViewIsActive : Bool
     @Binding var showConfig: Bool
     
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
@@ -112,7 +112,9 @@ struct ConfigurationView: View {
                         Button(action: {
                             // pop to root
                             self.environment?.reset()
-                            self.shouldPopToRootView = false
+                            print(gameViewIsActive)
+                            self.gameViewIsActive = false
+                            print(gameViewIsActive)
                         }, label: {
                             HStack {
                                 Spacer()

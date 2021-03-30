@@ -29,6 +29,13 @@ struct GameView: View {
     @State var areButtonsActive = true
     @State var showConfig = false
     
+    init(rootIsActive: Binding<Bool>, deck: String) {
+        self._rootIsActive = rootIsActive
+        
+        self.environment.currentDeck = deck
+        self.environment.objectWillChange.send()
+    }
+    
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
     
     /// Return the CardViews width for the given offset in the array
@@ -263,7 +270,7 @@ struct GameView: View {
                 /// config / pause
                 VStack {
                     Spacer()
-                    ConfigurationView(shouldPopToRootView: $rootIsActive, showConfig: $showConfig, environment: environment, isPause: true)
+                    ConfigurationView(gameViewIsActive: $rootIsActive, showConfig: $showConfig, environment: environment, isPause: true)
                         .offset(y: self.showConfig ? 0 : UIScreen.main.bounds.height)
                         .padding(.bottom)
                         .padding(.bottom) // sao dois mesmo hehe
@@ -318,16 +325,16 @@ struct GameView_PreviewProvider: PreviewProvider{
     @State static var active = false
     
     static var previews: some View{
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPod touch (7th generation)"))
         
-        GameView(rootIsActive: $active)
+        GameView(rootIsActive: $active, deck: "TeXeroNa13")
             .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
