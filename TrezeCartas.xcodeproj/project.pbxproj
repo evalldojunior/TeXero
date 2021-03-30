@@ -40,6 +40,9 @@
 		8908FB0D25CDB48200D899D2 /* TrezeCartasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908FB0C25CDB48200D899D2 /* TrezeCartasTests.swift */; };
 		8908FB1825CDB48200D899D2 /* TrezeCartasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908FB1725CDB48200D899D2 /* TrezeCartasUITests.swift */; };
 		89A8E99025D5BAD3005868A8 /* FinalGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8E98F25D5BAD3005868A8 /* FinalGameView.swift */; };
+		FE477EF12613A11800DB9D15 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE477EF02613A11800DB9D15 /* VisualEffectView.swift */; };
+		FE7C579526124F21003D8FA1 /* CollageEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7C579426124F21003D8FA1 /* CollageEnvironment.swift */; };
+		FEDA02922612499D00FE18B0 /* CollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA02912612499D00FE18B0 /* CollageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		8908FB1725CDB48200D899D2 /* TrezeCartasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrezeCartasUITests.swift; sourceTree = "<group>"; };
 		8908FB1925CDB48200D899D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89A8E98F25D5BAD3005868A8 /* FinalGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalGameView.swift; sourceTree = "<group>"; };
+		FE477EF02613A11800DB9D15 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		FE7C579426124F21003D8FA1 /* CollageEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageEnvironment.swift; sourceTree = "<group>"; };
+		FEDA02912612499D00FE18B0 /* CollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 				08EFE00325CF3BCD00086BFB /* ShakeGestureView.swift */,
 				08CA4FBA25D4A39E00BFE2BE /* StartGameView.swift */,
 				3E1D712625FAAF80007A1A0E /* ConfigurationView.swift */,
+				FEDA02912612499D00FE18B0 /* CollageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 				3E00D5ED25F928A000BB0CC6 /* ExtensionCornerRadius.swift */,
 				35CF7C5D25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift */,
 				3E00D60625F92C4E00BB0CC6 /* ExtensionMotion.swift */,
+				FE477EF02613A11800DB9D15 /* VisualEffectView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 			children = (
 				0894A10725D4B15C0007B370 /* GameEnvironment.swift */,
 				3508A8AF260D17550069A9DF /* AudioPreview.swift */,
+				FE7C579426124F21003D8FA1 /* CollageEnvironment.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -400,12 +409,15 @@
 				08831D9325D1DB810090D3E9 /* ExtensionColor.swift in Sources */,
 				89A8E99025D5BAD3005868A8 /* FinalGameView.swift in Sources */,
 				8908FAF525CDB48000D899D2 /* SceneDelegate.swift in Sources */,
+				FE7C579526124F21003D8FA1 /* CollageEnvironment.swift in Sources */,
 				08EFE00E25CF4B7D00086BFB /* GameView.swift in Sources */,
 				08EFE00925CF3DD700086BFB /* CardView.swift in Sources */,
 				3508A8B0260D17550069A9DF /* AudioPreview.swift in Sources */,
 				08EEAD9F25D44162002461DF /* ProgressBarView.swift in Sources */,
+				FE477EF12613A11800DB9D15 /* VisualEffectView.swift in Sources */,
 				0894A10825D4B15C0007B370 /* GameEnvironment.swift in Sources */,
 				08CA4FBB25D4A39E00BFE2BE /* StartGameView.swift in Sources */,
+				FEDA02922612499D00FE18B0 /* CollageView.swift in Sources */,
 				35CF7C5E25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
