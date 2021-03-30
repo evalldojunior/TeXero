@@ -29,6 +29,13 @@ struct GameView: View {
     @State var areButtonsActive = true
     @State var showConfig = false
     
+    var deck: String = "" {
+        didSet {
+            self.environment.currentDeck = self.deck
+            self.environment.objectWillChange.send()
+        }
+    }
+    
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
     
     /// Return the CardViews width for the given offset in the array

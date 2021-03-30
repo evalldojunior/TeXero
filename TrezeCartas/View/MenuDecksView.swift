@@ -9,15 +9,10 @@ import SwiftUI
 
 struct MenuDecksView: View {
     
-    //@EnvironmentObject var appState: AppState
     @State var isPresented = false
     @Namespace var namespace
     @State var showConfig = false
-    //@State var selection: Int? = nil
-    //var selection2: Int = 2
-    //@ObservedObject var environment: GameEnvironment
-    @ObservedObject var environment = GameEnvironment()
-    
+    var allDecks: [String] = ["TeXeroNa13", "none"]
     
     var body: some View {
         NavigationView {
@@ -28,8 +23,8 @@ struct MenuDecksView: View {
                     //NavigationLink(destination: GameView(rootIsActive: self.$isPresented), tag: selection2, selection: $selection){EmptyView()}.isDetailLink(false)
                     
                     VStack {
-                        LazySnapHStack(data: environment.allDecks){ deck in
-                            DeckCoverView(isPresented: $isPresented)
+                        LazySnapHStack(data: allDecks){ deck in
+                            DeckCoverView(isPresented: $isPresented, deckName: deck)
                             
                         }
                         Spacer().frame(height: 50)
@@ -51,24 +46,11 @@ struct MenuDecksView: View {
                                                 .stroke(Color.azulColor, lineWidth: 2.0)
                                         )
                                         .padding(5)
-                                    
-                                    VStack {
-                                        Image("ConquistasImage")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: geometry.size.height*0.07, height: geometry.size.height*0.07, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        Spacer().frame(height: 0)
-                                        HStack {
-                                            Spacer()
-                                            Text("Conquistas")
-                                                .font(UIScreen.main.bounds.height > 600 ? .callout : .caption)
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.pretoColor)
-                                                .multilineTextAlignment(.center)
-                                                .lineLimit(2)
-                                            Spacer()
-                                        }
-                                    }
+
+                                    Image("ConquistasImage")
+                                        .resizable()
+                                        .padding(10)
+                                        .scaledToFill()
                                 }
                             })
                             .frame(width: geometry.size.height*0.1477, height: geometry.size.height*0.1477)
@@ -80,7 +62,7 @@ struct MenuDecksView: View {
                             Spacer()
                             
                             Button(action: {
-                                // Abrir tela de coleção
+                                // Abrir tela de conquistas
                             }, label: {
                                 ZStack {
                                     Rectangle()
@@ -90,26 +72,12 @@ struct MenuDecksView: View {
                                                 .stroke(Color.roxoClaroColor, lineWidth: 2.0)
                                         )
                                         .padding(5)
-                                    
-                                    VStack {
-                                        Image("ColecaoImage")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: geometry.size.height*0.07, height: geometry.size.height*0.07, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        Spacer().frame(height: 0)
-                                        HStack {
-                                            Spacer()
-                                            Text("Coleção")
-                                                .font(UIScreen.main.bounds.height > 600 ? .callout : .caption)
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.pretoColor)
-                                                .multilineTextAlignment(.center)
-                                                .lineLimit(2)
-                                            Spacer()
-                                        }
-                                    }
+
+                                    Image("ConquistasImage")
+                                        .resizable()
+                                        .padding(10)
+                                        .scaledToFill()
                                 }
-                                
                             })
                             .frame(width: geometry.size.height*0.1477, height: geometry.size.height*0.1477)
                             .clipped()

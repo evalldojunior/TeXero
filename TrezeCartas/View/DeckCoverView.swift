@@ -9,17 +9,20 @@ import SwiftUI
 
 struct DeckCoverView: View {
     @Binding var isPresented: Bool
+    var deckName: String = ""
     
     var body: some View {
         
         GeometryReader { geometry in
             VStack(alignment: .center) {
                 ZStack {
-                    NavigationLink(destination: GameView(rootIsActive: self.$isPresented), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
+                    
+                    NavigationLink(destination: GameView(rootIsActive: self.$isPresented, deck: deckName), isActive: $isPresented) { EmptyView()}.isDetailLink(false)
+                    
                     
                     CardArt(complete: true)
-
-                    Image("TeXeroNa13Cover")
+                    
+                    Image(deckName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: geometry.size.width*0.6, height: geometry.size.height*0.4, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -36,6 +39,7 @@ struct DeckCoverView: View {
                             .scaledToFit()
                             .frame(width: geometry.size.width*0.2, height: geometry.size.height*0.075, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .padding()
+                            .opacity(self.deckName == "none" ? 0 : 1)
                     }
                     .padding()
                     
@@ -47,16 +51,18 @@ struct DeckCoverView: View {
             .cornerRadius(10)
             .shadow(radius: 5)            
         }
+        .saturation(self.deckName == "none" ? 0 : 1)
         .onTapGesture {
-            self.isPresented.toggle()
+            if self.deckName != "none" {
+                self.isPresented.toggle()
+            }
         }
-        
     }
 }
 
 struct DeckCoverView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckCoverView(isPresented: .constant(false))
+        DeckCoverView(isPresented: .constant(false), deckName: "none")
             .frame(width: 303, height: 440, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }

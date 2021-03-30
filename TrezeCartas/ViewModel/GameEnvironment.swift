@@ -13,13 +13,12 @@ class GameEnvironment: ObservableObject {
     
     var allCards: [JSONCard] = []
     
-    @Published var cards: [JSONCard] = []//(0...15).map{_ in JSONCard.placebo()}
+    @Published var cards: [JSONCard] = []
     @Published var maxID = 14
     
     @Published var attributes: Attributtes
     
     var blockEndingText: String = ""
-    var allDecks : [String] = ["TeXeroCards", "None"]
     var currentDeck : String? {
         didSet{
             self.reset()
@@ -33,6 +32,8 @@ class GameEnvironment: ObservableObject {
     
     func reset() {
         attributes = Attributtes()
+        
+        print(self.currentDeck!)
         
         guard let jsonPath = Bundle.main.path(forResource: currentDeck!, ofType: "txt") else { return /*fatalError()*/ }
 
