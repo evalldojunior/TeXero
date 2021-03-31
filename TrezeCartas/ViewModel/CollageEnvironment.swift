@@ -12,7 +12,10 @@ class CollageEnvironment: ObservableObject {
     @Published var areCardsDiscovered: [Bool] = []
     
     init() {
-        guard let jsonPath = Bundle.main.path(forResource: "TeXeroCards", ofType: "txt") else { fatalError() }
+        reset()
+    }
+    func reset(){
+        guard let jsonPath = Bundle.main.path(forResource: "TeXeroNa13", ofType: "txt") else { fatalError() }
         
         do {
             let jsonData = try String(contentsOfFile: jsonPath, encoding: String.Encoding.utf8).data(using: String.Encoding.utf8)!

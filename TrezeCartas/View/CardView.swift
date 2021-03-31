@@ -108,7 +108,7 @@ struct CardView: View {
                 UserDefaults.standard.setValue(discoveredCards, forKey: "has_discovered_cards_key")
             }
         } else {
-            UserDefaults.standard.setValue([] as! [Int], forKey: "has_discovered_cards_key")
+            UserDefaults.standard.setValue([card.uid], forKey: "has_discovered_cards_key")
         }
         
         if environment.attributes.healthStats! == 0 || environment.attributes.moneyStats! == 0 || environment.attributes.insanityStats! == 10 {

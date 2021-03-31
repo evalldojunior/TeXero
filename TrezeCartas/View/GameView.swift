@@ -97,7 +97,7 @@ struct GameView: View {
                                         if end {
                                             self.isPresentedGameOver.toggle()
                                             
-                                            UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_once_key")
+                                            UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_key")
                                             //self.environment.reset()
                                         } else {
                                             environment.changeCardPriority()
@@ -105,7 +105,7 @@ struct GameView: View {
                                             if environment.maxID == 0 {
                                                 self.isPresentedFinished.toggle()
                                                 
-                                                UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_once_key")
+                                                UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_key")
                                                 //self.environment.reset()
                                             }
                                             else{

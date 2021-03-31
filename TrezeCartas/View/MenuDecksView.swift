@@ -12,6 +12,8 @@ struct MenuDecksView: View {
     @State var isPresented = false
     @Namespace var namespace
     @State var showConfig = false
+    @State var isCollagePresented = false
+    
     var allDecks: [String] = ["TeXeroNa13", "none"]
     
     
@@ -58,9 +60,9 @@ struct MenuDecksView: View {
                             .shadow(radius: 5)
 
                             Spacer()
-                            
+                            NavigationLink(destination: CollageView(isActive: $isCollagePresented), isActive: $isCollagePresented) { EmptyView()}.isDetailLink(false)
                             Button(action: {
-                                // Abrir tela de coleção
+                                isCollagePresented = true
                             }, label: {
                                 ZStack {
                                     Rectangle()
@@ -71,7 +73,7 @@ struct MenuDecksView: View {
                                         )
                                         .padding(5)
 
-                                    Image("ConquistasImage")
+                                    Image("ColecaoImage")
                                         .resizable()
                                         .padding(10)
                                         .scaledToFill()

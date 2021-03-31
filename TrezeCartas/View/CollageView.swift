@@ -33,13 +33,13 @@ struct CollageView: View {
                     }
                     .padding(.top)
                 }.frame(height: 85)
-                
+                Spacer()
                 TabView{
                     
-                    ForEach((0..<environment.cards.count/8), id: \.self){ section in
+                    ForEach((0..<environment.cards.count/6), id: \.self){ section in
                         
-                        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .center, spacing: 16){
-                            ForEach((8*section..<8*section + 8), id: \.self){
+                        LazyVGrid(columns: [GridItem(), GridItem()], alignment: .center){
+                            ForEach((6*section..<6*section + 6), id: \.self){
                                 index in
                                 if let card = environment.cards[index]{
                                     ZStack {
@@ -75,18 +75,23 @@ struct CollageView: View {
                                 }
                                 
                             }
-                        }.padding(.bottom, 30 )
+                        }
+                        .padding(.bottom, 30 )
                         .padding(.horizontal)
+                        
                         //.padding(.bottom, 40)
                         
                     }
                     
+                    
                 }
+                
                 .tabViewStyle(PageTabViewStyle())
                 
-                .padding(.bottom, 10)
                 .ignoresSafeArea(.all, edges: .bottom)
-                .accentColor(Color.roxoColor)
+                Spacer()
+                //.background(Color.pink)
+                
             }
             
             Button(action: {
@@ -95,18 +100,26 @@ struct CollageView: View {
                 Image(systemName: "chevron.left")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(Color("roxoClaro"))
+                    .foregroundColor(Color.roxoColor)
                     .frame(width: 20, height: 20)
             }.padding()
         }
         .background(Color.white.ignoresSafeArea())
-        
-        
+        .navigationBarHidden(true)
+        .onAppear(perform: {
+            UIScrollView.appearance().bounces = false
+            self.environment.reset()
+         })
+        .onDisappear(perform: {
+           UIScrollView.appearance().bounces = true
+         })
     }
 }
 struct CollageView_Previews: PreviewProvider {
     static var previews: some View {
         CollageView(isActive: .constant(true))
             .previewDevice("iPhone 11")
+        CollageView(isActive: .constant(true))
+            .previewDevice("iPhone 8")
     }
 }

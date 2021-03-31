@@ -43,7 +43,7 @@ class GameEnvironment: ObservableObject {
             
             let initialCard: JSONCard
             let idToAdd: Int
-            if UserDefaults.standard.bool(forKey: "has_completed_onboarding_once_key"){
+            if UserDefaults.standard.bool(forKey: "has_completed_onboarding_key"){
                 initialCard = allCards.first(where: {$0.uid == 1})!
                 idToAdd = 1
             }
@@ -122,12 +122,10 @@ class GameEnvironment: ObservableObject {
                 allCards.removeAll(where: {cardToRemove in
                     cardToRemove.uid == card.uid
                 })
+                return
             }
-            else{
-                self.maxID -= 1
-                self.attributes.dependsFrom = nil
-            }
-            return
+            
+            
         }
         var cardPriority: [(JSONCard, Double)] = allCards.filter{$0.dependsFrom == nil}.map{ card in
             return(card, 1)
