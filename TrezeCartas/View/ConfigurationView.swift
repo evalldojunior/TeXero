@@ -13,7 +13,7 @@ struct ConfigurationView: View {
     @Binding var showConfig: Bool
     
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
-    @AppStorage("sound") var isSoundOn : Bool = false
+    @AppStorage("sound") var isSoundOn : Bool = true
     
     var environment : GameEnvironment?
     

@@ -37,7 +37,7 @@ struct GameView: View {
     }
     
     @AppStorage("acessibility") var isAcessibilityOn : Bool = false
-    @AppStorage("sound") var isSoundOn : Bool = false
+    @AppStorage("sound") var isSoundOn : Bool = true
     
     /// Return the CardViews width for the given offset in the array
     /// - Parameters:

@@ -15,7 +15,7 @@ class AudioPreview{
     
     var actionPlayer: AVAudioPlayer?
     
-    @AppStorage("sound") var isSoundOn : Bool = false
+    @AppStorage("sound") var isSoundOn : Bool = true
     
     init(){
         guard let url = Bundle.main.url(forResource: "background_sound", withExtension: "wav") else {
