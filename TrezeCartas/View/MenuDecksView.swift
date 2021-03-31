@@ -13,7 +13,7 @@ struct MenuDecksView: View {
     @Namespace var namespace
     @State var showConfig = false
     @State var isCollagePresented = false
-    
+    @State var isAchievementsPresented = false
     var allDecks: [String] = ["TeXeroNa13", "none"]
     
     
@@ -35,8 +35,10 @@ struct MenuDecksView: View {
                         Spacer()
                         HStack{
                             Spacer()
+                            NavigationLink(destination: AchievementsView(isActive: $isAchievementsPresented), isActive: $isAchievementsPresented) { EmptyView()}.isDetailLink(false)
                             Button(action: {
                                 // Abrir tela de conquistas
+                                isAchievementsPresented = true
                             }, label: {
                                 ZStack {
                                     Rectangle()
@@ -143,5 +145,6 @@ struct MenuDecksView: View {
 struct MenuDecksView_Previews: PreviewProvider {
     static var previews: some View {
         MenuDecksView()
+            .previewDevice("iPod touch (7th generation)")
     }
 }

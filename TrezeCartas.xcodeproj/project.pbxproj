@@ -27,6 +27,7 @@
 		3544852B261242E1009B3983 /* latinha.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3544852A261242E1009B3983 /* latinha.wav */; };
 		3544852F261242EC009B3983 /* latinha.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3544852A261242E1009B3983 /* latinha.wav */; };
 		3568617725F15EEC00C2B261 /* TeXeroNa13.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3568617625F15EEC00C2B261 /* TeXeroNa13.txt */; };
+		3597EE752614FBAB0052771B /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3597EE742614FBAB0052771B /* AchievementsView.swift */; };
 		35CF7C5E25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF7C5D25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift */; };
 		3E00D5EE25F928A000BB0CC6 /* ExtensionCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E00D5ED25F928A000BB0CC6 /* ExtensionCornerRadius.swift */; };
 		3E00D5F325F9290400BB0CC6 /* ExtensionClamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E00D5F225F9290400BB0CC6 /* ExtensionClamped.swift */; };
@@ -82,6 +83,7 @@
 		3508A8BF260D18FB0069A9DF /* card_flip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = card_flip.wav; sourceTree = "<group>"; };
 		3544852A261242E1009B3983 /* latinha.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = latinha.wav; sourceTree = "<group>"; };
 		3568617625F15EEC00C2B261 /* TeXeroNa13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TeXeroNa13.txt; sourceTree = "<group>"; };
+		3597EE742614FBAB0052771B /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		35CF7C5D25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionReflectedStringConvertible.swift; sourceTree = "<group>"; };
 		3E00D5ED25F928A000BB0CC6 /* ExtensionCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCornerRadius.swift; sourceTree = "<group>"; };
 		3E00D5F225F9290400BB0CC6 /* ExtensionClamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionClamped.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				3E1D712625FAAF80007A1A0E /* ConfigurationView.swift */,
 				3E8E227E26124C9600189EC4 /* DeckCoverView.swift */,
 				FEDA02912612499D00FE18B0 /* CollageView.swift */,
+				3597EE742614FBAB0052771B /* AchievementsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				08EEAD9F25D44162002461DF /* ProgressBarView.swift in Sources */,
 				FE477EF12613A11800DB9D15 /* VisualEffectView.swift in Sources */,
 				0894A10825D4B15C0007B370 /* GameEnvironment.swift in Sources */,
+				3597EE752614FBAB0052771B /* AchievementsView.swift in Sources */,
 				08CA4FBB25D4A39E00BFE2BE /* StartGameView.swift in Sources */,
 				FEDA02922612499D00FE18B0 /* CollageView.swift in Sources */,
 				35CF7C5E25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift in Sources */,

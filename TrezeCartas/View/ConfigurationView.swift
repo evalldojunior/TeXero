@@ -27,7 +27,7 @@ struct ConfigurationView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text(isPause ? "Pause" : "Configurações")
+                        Text("Configurações")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundColor(.brancoColor)

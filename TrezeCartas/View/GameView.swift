@@ -251,7 +251,7 @@ struct GameView: View {
                         Button(action: {
                             self.showConfig.toggle()
                         }, label: {
-                            Image(systemName: "pause.circle.fill")
+                            Image(systemName: "ellipsis.circle.fill")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(minHeight: 25)

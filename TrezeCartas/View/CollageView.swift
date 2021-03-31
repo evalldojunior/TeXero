@@ -120,6 +120,6 @@ struct CollageView_Previews: PreviewProvider {
         CollageView(isActive: .constant(true))
             .previewDevice("iPhone 11")
         CollageView(isActive: .constant(true))
-            .previewDevice("iPhone 8")
+            .previewDevice("iPod touch (7th generation)")
     }
 }
