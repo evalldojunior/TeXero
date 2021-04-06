@@ -29,16 +29,19 @@ struct AchievementsView: View {
                         Spacer()
                     }
                     .padding(.top)
-                }.frame(height: 85)
-                Spacer()
-                
-                LazyVGrid(columns: [GridItem()]) {
-                    ScrollView(.vertical) {
+                }
+                .frame(height: 85)
+                .padding(.bottom, 50)
+
+                ScrollView(.vertical) {
+                    LazyVStack(alignment: .center, spacing: 10) {
                         ForEach(0..<self.environment.achievements.count, id: \.self) { index in
                             AchievementCardView(achievement: self.environment.achievements[index])
                         }
                     }
                 }
+                
+                //Spacer()
             }
             
             Button(action: {
@@ -60,6 +63,8 @@ struct AchievementsView: View {
         .onDisappear(perform: {
             UIScrollView.appearance().bounces = true
         })
+        
+        
     }
 }
 
@@ -69,10 +74,24 @@ struct AchievementCardView: View {
     var body: some View {
         ZStack {
             CardAchievementArt()
+            
+            VStack {
+                Text(achievement.title)
+                    .font(.title3)
+                    .foregroundColor(.amareloColor)
+                
+                Spacer()
+                
+                Text(achievement.description)
+                    .font(.caption2)
+                    .foregroundColor(.brancoColor)
+                
+            }
+            .padding()
         }
-        .padding()
+        .padding(10)
         .clipped()
-        .frame(width: UIScreen.main.bounds.width, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        .frame(width: UIScreen.main.bounds.width*0.9, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         .background(Color.verdeColor)
         .cornerRadius(10)
         
@@ -87,7 +106,7 @@ struct CardAchievementArt: View {
                 .foregroundColor(.clear)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.roxoColor, lineWidth: 4.0)
+                        .stroke(Color.roxoColor, lineWidth: 2.0)
                 )
             VStack {
                 HStack {
@@ -103,8 +122,7 @@ struct CardAchievementArt: View {
                     CardAchievementCircle()
                 }
             }
-            
-        }.padding()
+        }
     }
 }
 
@@ -112,12 +130,12 @@ struct CardAchievementCircle: View {
     
     var body: some View {
         Circle()
-            .frame(width: 12, height: 12, alignment: .center)
+            .frame(width: 9, height: 9, alignment: .center)
             .foregroundColor(Color.amareloColor)
             .padding(6)
             .overlay(
                 RoundedRectangle(cornerRadius: 50)
-                    .stroke(Color.roxoColor, lineWidth: 4.0)
+                    .stroke(Color.roxoColor, lineWidth: 2.0)
             )
     }
 }
@@ -129,5 +147,6 @@ struct AchievementsView_Previews: PreviewProvider {
             .previewDevice("iPhone 11")
         AchievementsView(isActive: .constant(true))
             .previewDevice("iPod touch (7th generation)")
+                
     }
 }
