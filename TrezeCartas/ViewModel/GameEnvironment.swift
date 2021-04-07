@@ -18,6 +18,8 @@ class GameEnvironment: ObservableObject {
     
     @Published var attributes: Attributtes
     
+    var achievements: [String: Achievement] = [:]
+    
     var blockEndingText: String = ""
     var currentDeck : String? {
         didSet{
@@ -28,13 +30,24 @@ class GameEnvironment: ObservableObject {
     init(){
         //AudioPreview.shared.backgroundPlayer!.play()        
         attributes = Attributtes()
+        
+        let result = Achievement.restore()
+        
+        if case .success(let achievements) = result{
+            self.achievements = achievements
+        }
         //reset()
     }
     
     func reset() {
         
         attributes = Attributtes()
-                
+        
+        let result = Achievement.restore()
+        
+        if case .success(let achievements) = result{
+            self.achievements = achievements
+        }
         guard let jsonPath = Bundle.main.path(forResource: currentDeck!, ofType: "txt") else { return /*fatalError()*/ }
 
         do {
@@ -73,10 +86,28 @@ class GameEnvironment: ObservableObject {
         self.objectWillChange.send()
     }
 
+    func checkAchievements(result: Attributtes){
+        //vamos checar o enviroment antes de ver o result e o result
+        //beijoqueiro
+        achievements["beijoqueiro"]?.check(condition: result.hasKissed == true, step: 0.1)
+        
+        //feioso
+        achievements["feioso"]?.check(condition: result.hasKissed == false, step: 0.1, reset: result.hasKissed == true)
+    
+        
+        do{
+            try Achievement.archive(achievements: self.achievements)
+        }
+        catch{
+            print(error)
+        }
+    }
     
     func changeEnvironment(result: Attributtes){
         
         AudioPreview.shared.play(name: "card_flip", volume: 0.2, delay: 0)
+        
+        checkAchievements(result: result)
         
         if let endGame = result.endGame{
             self.attributes.endGame = endGame

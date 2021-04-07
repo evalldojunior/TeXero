@@ -21,6 +21,17 @@ class TrezeCartasTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+        let result = Achievement.restore()
+        if case .success(let achievements) = result{
+            print(achievements)
+        }
+        else if case .failure(let error) = result{
+            print(error)
+        }
+        
+        
     }
 
     func testPerformanceExample() throws {

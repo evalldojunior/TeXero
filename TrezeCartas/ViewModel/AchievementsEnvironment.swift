@@ -15,7 +15,11 @@ class AchievementsEnvironment: ObservableObject {
     }
     
     func reset(){
-        self.achievements = [Achievement(title: "Beijjoqueiro", description: "Beijou mais de 50 bocas em um dia de Carnaval.")]
+        let result = Achievement.restore()
+        
+        if case .success(let array) = result{
+            self.achievements = array.map{$0.value}
+        }
     }
     
     func getAllAchievements() {

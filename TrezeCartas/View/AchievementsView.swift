@@ -33,6 +33,7 @@ struct AchievementsView: View {
                 .frame(height: 85)
                 .padding(.bottom, 50)
 
+                
                 ScrollView(.vertical) {
                     LazyVStack(alignment: .center, spacing: 10) {
                         ForEach(0..<self.environment.achievements.count, id: \.self) { index in
