@@ -12,6 +12,7 @@ struct EndGameView: View {
 
     @Binding var shouldPopToRootView : Bool
     @Binding var description: String
+    @Binding var isPresentedGameOver : Bool
     
     @ObservedObject var environment : GameEnvironment
     
@@ -40,31 +41,100 @@ struct EndGameView: View {
                         .frame(width: 230)
                         .padding()
                     Spacer()
+                    
+                    VStack(alignment: .center){
+                        
+                        //Spacer()
+                        
+                        Button(action: {
+                            //jogar novamente
+                            self.environment.reset()
+                            self.environment.objectWillChange.send()
+                            self.isPresentedGameOver.toggle()
+                            
+                        }, label: {
+                            HStack {
+                                Spacer()
+                                Text("Jogar Novamente")
+                                    .font(.callout)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.brancoColor)
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(2)
+                                    .padding(7)
+                                Spacer()
+                            }
+                            
+                        }).frame(height: 55)
+                        .clipped()
+                        .background(Color.rosaColor)
+                        .cornerRadius(10)
+                        
+//                        Button(action: {
+//                            // pop to root
+//                            //self.environment?.reset()
+//                            //print(gameViewIsActive)
+//                            //self.gameViewIsActive = false
+//                            //print(gameViewIsActive)
+//                        }, label: {
+//                            HStack {
+//                                Spacer()
+//                                Text("Ir para Coleção")
+//                                    .font(.callout)
+//                                    .fontWeight(.semibold)
+//                                    .foregroundColor(.brancoColor)
+//                                    .multilineTextAlignment(.center)
+//                                    .lineLimit(2)
+//                                    .padding(7)
+//                                Spacer()
+//                            }
+//                            
+//                        }).frame(height: 55)
+//                        .clipped()
+//                        .background(Color.azulColor)
+//                        .cornerRadius(10)
+                        
+                        Button(action: {
+                            self.environment.reset()
+                            self.environment.objectWillChange.send()
+                            self.shouldPopToRootView = false
+                            
+                        }, label: {
+                            HStack {
+                                Spacer()
+                                Text("Retornar ao Menu Principal")
+                                    .font(.callout)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.rosaColor)
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(2)
+                                    .padding(7)
+                                Spacer()
+                            }
+                            
+                        }).frame(height: 55)
+                        .clipped()
+                        .background(Color.brancoColor)
+                        .cornerRadius(10)
+                        
+                    }.padding()
                 }
                 
-                VStack {
-                    Text("Toque para tentar novamente")
-                        .font(.subheadline)
-                        .fontWeight(.regular)
-                        .foregroundColor(.brancoColor)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    Spacer()
-                        .frame(height: 60)
-                }
+                
+
                 
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .frame(width: geometry.size.width, height: geometry.size.height)
-            .background(Color.black)
-            .onTapGesture {
-                //presentationMode.wrappedValue.dismiss()
-                self.environment.reset()
-                self.environment.objectWillChange.send()
-                self.shouldPopToRootView = false
-            }
+            .background(Color.black.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
+//            .onTapGesture {
+//                //presentationMode.wrappedValue.dismiss()
+//                self.environment.reset()
+//                self.environment.objectWillChange.send()
+//                self.shouldPopToRootView = false
+//            }
 //            .onChange(of: isPresented, perform: { value in
 //                self.mode.wrappedValue.dismiss()
 //            })
@@ -72,7 +142,7 @@ struct EndGameView: View {
 //                StartGame()
 //            })
             
-        }.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }//.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .preferredColorScheme(.light)
         .statusBar(hidden: true)
     }

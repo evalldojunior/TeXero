@@ -316,8 +316,13 @@ struct GameView: View {
             }
             self.environment.objectWillChange.send()
         }
-        .overlay(EndGameView(shouldPopToRootView: self.$rootIsActive, description: $description, environment: environment).opacity(isPresentedGameOver ? 1 : 0).animation(.easeInOut(duration: 0.3)))
-        .overlay(FinalGameView(shouldPopToRootView: self.$rootIsActive, environment: environment).opacity(isPresentedFinished ? 1 : 0).animation(.easeInOut(duration: 0.3)))
+        .overlay(EndGameView(shouldPopToRootView: self.$rootIsActive, description: $description, isPresentedGameOver: $isPresentedGameOver, environment: environment).opacity(isPresentedGameOver ? 1 : 0).animation(.easeInOut(duration: 0.3)))
+        .overlay(FinalGameView(shouldPopToRootView: self.$rootIsActive, environment: environment, isPresentedFinished: $isPresentedFinished).opacity(isPresentedFinished ? 1 : 0).animation(.easeInOut(duration: 0.3)))
+//        .onChange(of: self.isPresentedGameOver){ value in
+//            if !isPresentedGameOver {
+//                self.end = false
+//            }
+//        }
     }
 }
 struct GameView_PreviewProvider: PreviewProvider{
