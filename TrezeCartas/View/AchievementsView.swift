@@ -84,9 +84,12 @@ struct AchievementCardView: View {
                 Spacer()
                 
                 Text(achievement.description)
-                    .font(.caption2)
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.brancoColor)
-                
+                    .padding(.horizontal, UIScreen.main.bounds.width * 0.025)
+                    .minimumScaleFactor(0.5)
             }
             .padding()
         }
