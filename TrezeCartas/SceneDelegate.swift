@@ -8,6 +8,12 @@
 import UIKit
 import SwiftUI
 import GameKit
+class hostGC<T>: UIHostingController<T>, GKGameCenterControllerDelegate where T: View {
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
+}
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -20,7 +26,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let vc = vc {
                 //show game center sign in controller
                 viewController.present(vc, animated: true, completion: nil)
+                print("socorro quero fazer a prova")
+               
             }
+            
+            let vc = GKGameCenterViewController()
+                    
+            vc.gameCenterDelegate = viewController as! GKGameCenterControllerDelegate
+                    vc.viewState = .achievements
+                    
+                    //vc.leaderboardIdentifier = "LGPC.highscore"
+            viewController.present(vc, animated: true)
         }
     }
     
@@ -39,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = HostingController(rootView: contentView)
+            window.rootViewController = hostGC(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
             

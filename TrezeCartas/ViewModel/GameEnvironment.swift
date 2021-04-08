@@ -89,10 +89,9 @@ class GameEnvironment: ObservableObject {
     func checkAchievements(result: Attributtes){
         //vamos checar o enviroment antes de ver o result e o result
         //beijoqueiro
-        achievements["beijoqueiro"]?.check(condition: result.hasKissed == true, step: 0.1)
-        
+        achievements["beijoqueiro"]?.check(condition: result.hasKissed == true, step: 10)
         //feioso
-        achievements["feioso"]?.check(condition: result.hasKissed == false, step: 0.1, reset: result.hasKissed == true)
+        //achievements["feioso"]?.check(condition: result.hasKissed == false, step: 10, reset: result.hasKissed == true)
     
         
         do{

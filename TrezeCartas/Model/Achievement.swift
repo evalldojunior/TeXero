@@ -35,7 +35,7 @@ class Achievement: Codable, ReflectedStringConvertible {
             self.completion += step
             
             reportAchievement(step: step)
-            if self.completion >= 1{
+            if self.completion >= 100{
                 self.isCompleted = true
             }
         }
@@ -51,9 +51,9 @@ class Achievement: Codable, ReflectedStringConvertible {
         }
         
         //if achievement is unlocked, we will pass 100.0 here
-        
-        achievement.percentComplete += step
-        
+        print(achievement.percentComplete)
+        achievement.percentComplete += self.completion
+        print(achievement.percentComplete)
         //we want the default banner to be displayed
         achievement.showsCompletionBanner = true
         //report
