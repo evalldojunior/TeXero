@@ -96,23 +96,17 @@ struct GameView: View {
                                         // Remove that card from our array
                                         if end {
                                             self.isPresentedGameOver.toggle()
-                                            
                                             UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_key")
-                                            //self.environment.reset()
                                         } else {
                                             environment.changeCardPriority()
                                             
                                             if environment.maxID == 0 {
                                                 self.isPresentedFinished.toggle()
-                                                
                                                 UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_key")
-                                                //self.environment.reset()
                                             }
-                                            else{
-                                                self.environment.cards.removeLast()
-                                            }
-                                            
                                         }
+                                        self.environment.cards.removeLast()
+                                        
                                     }, environment: environment, leftOption: $leftOption, rightOption: $rightOption, end: $end, isCardShowingBack: $isCardShowingBack, leftButton: $leftButton, rightButton: $rightButton, pass: $pass)
                                     .animation(.spring())
                                     .frame(maxHeight: geometry.size.height*(isAcessibilityOn ? 0.6 : 0.7), alignment: .top)
@@ -122,6 +116,7 @@ struct GameView: View {
                                 }
                             }
                         }
+                        
                     }
                     .frame(height: geometry.size.height*0.6, alignment: .center)
                     
@@ -274,7 +269,7 @@ struct GameView: View {
                     ConfigurationView(gameViewIsActive: $rootIsActive, showConfig: $showConfig, environment: environment, isPause: true)
                         .offset(y: self.showConfig ? 0 : UIScreen.main.bounds.height)
                         .padding(.bottom)
-                        .padding(.bottom) // sao dois mesmo hehe
+                        .padding(.bottom)
                 }
                 .background(VisualEffectView(effect: UIBlurEffect(style: .dark))
                                 .edgesIgnoringSafeArea(.all)
@@ -318,11 +313,22 @@ struct GameView: View {
         }
         .overlay(EndGameView(shouldPopToRootView: self.$rootIsActive, description: $description, isPresentedGameOver: $isPresentedGameOver, environment: environment).opacity(isPresentedGameOver ? 1 : 0).animation(.easeInOut(duration: 0.3)))
         .overlay(FinalGameView(shouldPopToRootView: self.$rootIsActive, environment: environment, isPresentedFinished: $isPresentedFinished).opacity(isPresentedFinished ? 1 : 0).animation(.easeInOut(duration: 0.3)))
-//        .onChange(of: self.isPresentedGameOver){ value in
-//            if !isPresentedGameOver {
-//                self.end = false
-//            }
-//        }
+        .onChange(of: self.isPresentedGameOver){ value in
+            if !isPresentedGameOver {
+                self.environment.reset()
+                self.environment.objectWillChange.send()
+                self.isCardShowingBack = false
+                self.end = false
+            }
+        }
+        .onChange(of: self.isPresentedFinished){ value in
+            if !isPresentedFinished {
+                self.environment.reset()
+                self.environment.objectWillChange.send()
+                self.isCardShowingBack = false
+                self.end = false
+            }
+        }
     }
 }
 struct GameView_PreviewProvider: PreviewProvider{

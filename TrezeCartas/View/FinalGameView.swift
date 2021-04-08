@@ -44,7 +44,7 @@ struct FinalGameView: View {
                     Spacer()
                     
                     Button(action: {
-                        //jogar novamente
+                        self.isPresentedFinished.toggle()
                     }, label: {
                         HStack {
                             Spacer()
@@ -121,13 +121,6 @@ struct FinalGameView: View {
                     .scaledToFill()
             )
             .background(Color("roxoClaro"))
-//            .onTapGesture {
-//                //presentationMode.wrappedValue.dismiss()
-//                self.environment.reset()
-//                self.environment.objectWillChange.send()
-//                self.shouldPopToRootView = false
-//            }
-            
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .preferredColorScheme(.light)

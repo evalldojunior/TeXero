@@ -47,11 +47,7 @@ struct EndGameView: View {
                         //Spacer()
                         
                         Button(action: {
-                            //jogar novamente
-                            self.environment.reset()
-                            self.environment.objectWillChange.send()
                             self.isPresentedGameOver.toggle()
-                            
                         }, label: {
                             HStack {
                                 Spacer()
@@ -69,30 +65,6 @@ struct EndGameView: View {
                         .clipped()
                         .background(Color.rosaColor)
                         .cornerRadius(10)
-                        
-//                        Button(action: {
-//                            // pop to root
-//                            //self.environment?.reset()
-//                            //print(gameViewIsActive)
-//                            //self.gameViewIsActive = false
-//                            //print(gameViewIsActive)
-//                        }, label: {
-//                            HStack {
-//                                Spacer()
-//                                Text("Ir para Coleção")
-//                                    .font(.callout)
-//                                    .fontWeight(.semibold)
-//                                    .foregroundColor(.brancoColor)
-//                                    .multilineTextAlignment(.center)
-//                                    .lineLimit(2)
-//                                    .padding(7)
-//                                Spacer()
-//                            }
-//                            
-//                        }).frame(height: 55)
-//                        .clipped()
-//                        .background(Color.azulColor)
-//                        .cornerRadius(10)
                         
                         Button(action: {
                             self.environment.reset()
@@ -119,30 +91,13 @@ struct EndGameView: View {
                         
                     }.padding()
                 }
-                
-                
-
-                
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(Color.black.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
-//            .onTapGesture {
-//                //presentationMode.wrappedValue.dismiss()
-//                self.environment.reset()
-//                self.environment.objectWillChange.send()
-//                self.shouldPopToRootView = false
-//            }
-//            .onChange(of: isPresented, perform: { value in
-//                self.mode.wrappedValue.dismiss()
-//            })
-//            .fullScreenCover(isPresented: $isPresented, content: {
-//                StartGame()
-//            })
-            
-        }//.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }
         .preferredColorScheme(.light)
         .statusBar(hidden: true)
     }
