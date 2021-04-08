@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GameKit
 
 class Achievement: Codable, ReflectedStringConvertible {
     var id: String
@@ -32,10 +33,36 @@ class Achievement: Codable, ReflectedStringConvertible {
         }
         if condition{
             self.completion += step
+            
+            reportAchievement(step: step)
             if self.completion >= 1{
                 self.isCompleted = true
             }
         }
+        
+        
+    }
+    
+    func reportAchievement(step: Double){
+        let achievement = GKAchievement(identifier: self.id)
+        
+        if achievement.isCompleted{
+            return
+        }
+        
+        //if achievement is unlocked, we will pass 100.0 here
+        
+        achievement.percentComplete += step
+        
+        //we want the default banner to be displayed
+        achievement.showsCompletionBanner = true
+        //report
+        
+        GKAchievement.report([achievement], withCompletionHandler: { error in
+            if let error = error{
+                print(error)
+            }
+        })
         
         
     }

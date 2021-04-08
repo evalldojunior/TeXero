@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import GameKit
 
 class GameEnvironment: ObservableObject {
     
