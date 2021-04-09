@@ -18,7 +18,7 @@ class AchievementsEnvironment: ObservableObject {
         let result = Achievement.restore()
         
         if case .success(let array) = result{
-            self.achievements = array.map{$0.value}
+            self.achievements = array.map({$0.value}).sorted{$0.isCompleted && !$1.isCompleted}
         }
     }
     

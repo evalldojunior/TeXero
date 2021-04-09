@@ -8,13 +8,30 @@
 import UIKit
 import SwiftUI
 import GameKit
-class hostGC<T>: UIHostingController<T>, GKGameCenterControllerDelegate where T: View {
+
+protocol GameCenterDelegate {
+    func presentGameCenter()
+}
+
+
+class HostControllerWithGameCenter<T>: UIHostingController<T>, GKGameCenterControllerDelegate where T: View {
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
 }
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, GameCenterDelegate {
+    func presentGameCenter() {
+        let vc = GKGameCenterViewController()
+                
+        vc.gameCenterDelegate = window!.rootViewController as? GKGameCenterControllerDelegate
+                vc.viewState = .achievements
+                
+                //vc.leaderboardIdentifier = "LGPC.highscore"
+        window!.rootViewController!.present(vc, animated: true)
+    }
+    
 
     var window: UIWindow?
 
@@ -26,17 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let vc = vc {
                 //show game center sign in controller
                 viewController.present(vc, animated: true, completion: nil)
-                print("socorro quero fazer a prova")
                
             }
-            
-            let vc = GKGameCenterViewController()
-                    
-            vc.gameCenterDelegate = viewController as! GKGameCenterControllerDelegate
-                    vc.viewState = .achievements
-                    
-                    //vc.leaderboardIdentifier = "LGPC.highscore"
-            viewController.present(vc, animated: true)
         }
     }
     
@@ -50,12 +58,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = MenuDecksView().environment(\.managedObjectContext, context)
+        let contentView = MenuDecksView(gameCenterDelegate: self).environment(\.managedObjectContext, context)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = hostGC(rootView: contentView)
+            window.rootViewController = HostControllerWithGameCenter(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
             

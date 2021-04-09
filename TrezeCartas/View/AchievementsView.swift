@@ -9,12 +9,14 @@ import SwiftUI
 
 struct AchievementsView: View {
     @ObservedObject var environment = AchievementsEnvironment()
+    var gameCenterDelegate: GameCenterDelegate?
     
     @Binding var isActive: Bool
     
-    init(isActive: Binding<Bool>){
-        _isActive = isActive
-    }
+//    init(isActive: Binding<Bool>){
+//        _isActive = isActive
+//
+//    }
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -54,6 +56,28 @@ struct AchievementsView: View {
                     .foregroundColor(Color.roxoColor)
                     .frame(width: 20, height: 20)
             }.padding()
+            
+            VStack (alignment: .trailing) {
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        gameCenterDelegate?.presentGameCenter()
+                    }, label: {
+                        Image("gameCenter")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(minHeight: 25)
+                            .frame(height: UIScreen.main.bounds.height*0.035)
+                            .foregroundColor(Color.roxoClaroColor)
+                        //.padding(6)
+                    })
+                    .padding(.top)
+//                    .padding(.top, UIScreen.main.bounds.height > 800 ? UIScreen.main.bounds.height*0.02 : 0)
+                }
+                
+                Spacer()
+            }.padding(.horizontal)
         }
         .background(Color.brancoColor.ignoresSafeArea())
         .navigationBarHidden(true)
@@ -95,6 +119,7 @@ struct AchievementCardView: View {
         .frame(width: UIScreen.main.bounds.width*0.9, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         .background(Color.verdeColor)
         .cornerRadius(10)
+        .saturation(achievement.isCompleted ? 1 : 0)
         
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuDecksView: View {
-    
+    var gameCenterDelegate: GameCenterDelegate?
     @State var isPresented = false
     @Namespace var namespace
     @State var showConfig = false
@@ -35,7 +35,7 @@ struct MenuDecksView: View {
                         Spacer()
                         HStack{
                             Spacer()
-                            NavigationLink(destination: AchievementsView(isActive: $isAchievementsPresented), isActive: $isAchievementsPresented) { EmptyView()}.isDetailLink(false)
+                            NavigationLink(destination: AchievementsView(gameCenterDelegate: gameCenterDelegate, isActive: $isAchievementsPresented), isActive: $isAchievementsPresented) { EmptyView()}.isDetailLink(false)
                             Button(action: {
                                 // Abrir tela de conquistas
                                 isAchievementsPresented = true
