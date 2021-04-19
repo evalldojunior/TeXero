@@ -104,6 +104,7 @@ struct GameView: View {
                                             
                                             if environment.maxID == 0 {
                                                 self.isPresentedFinished.toggle()
+                                                self.environment.checkWinAchievements(isGameWon: true)
                                                 
                                                 UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_key")
                                                 //self.environment.reset()
