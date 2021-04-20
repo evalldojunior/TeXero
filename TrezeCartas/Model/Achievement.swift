@@ -51,9 +51,7 @@ class Achievement: Codable, ReflectedStringConvertible {
         }
         
         //if achievement is unlocked, we will pass 100.0 here
-        print(achievement.percentComplete)
         achievement.percentComplete += self.completion
-        print(achievement.percentComplete)
         //we want the default banner to be displayed
         achievement.showsCompletionBanner = true
         //report
@@ -91,7 +89,7 @@ class Achievement: Codable, ReflectedStringConvertible {
                 Achievement(id: "beijoqueiro", title: "Beijoqueiro", description: "Beijou mais de 10 bocas em um dia de Carnaval."),
                 Achievement(id: "deuPt", title: "Deu PT", description: "Não aproveitou o Carnaval porque ficou trilouco"),
                 Achievement(id: "aluguel", title: "Morando de Aluguel", description: "Perdeu todo dinheiro antes do fim do jogo"),
-                Achievement(id: "homemChora", title: "Porque Homem Não Chora", description: "Teve o coração quebrado cinco vezes"),
+                Achievement(id: "homemChora", title: "Porque Homem Não Chora...", description: "Teve o coração quebrado cinco vezes"),
                 Achievement(id: "primeiroMuitos", title: "Primeiro de Muitos", description: "Sobreviveu ao Carnaval pela primeira vez"),
                 Achievement(id: "reiOlinda", title: "Rei de Olinda", description: "Ganhou cinco vezes"),
                 Achievement(id: "bafometro", title: "Bafômetro Quebrado", description: "Chegou a insanidade 9 e ainda sobreviveu ao Carnaval")]

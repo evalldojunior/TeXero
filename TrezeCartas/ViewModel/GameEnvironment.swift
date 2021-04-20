@@ -89,21 +89,23 @@ class GameEnvironment: ObservableObject {
     func checkWinAchievements(isGameWon: Bool) {
         achievements["primeiroMuitos"]?.check(condition: isGameWon, step: 100)
         achievements["reiOlinda"]?.check(condition: isGameWon, step: 20)
-        achievements["bafometro"]?.check(condition: isGameWon && self.attributes.insanityStats! >= 8, step: 10)
+        achievements["bafometro"]?.check(condition: isGameWon && self.attributes.insanityStats! >= 8, step: 100)
+        
+        achievements["deuPt"]?.check(condition: !isGameWon && self.attributes.insanityStats == 10, step: 100)
+        
+        do{
+            try Achievement.archive(achievements: self.achievements)
+        }
+        catch{
+            print(error)
+        }
     }
     
     func checkAchievements(result: Attributtes){
-        //vamos checar o enviroment antes de ver o result e o result
-        //beijoqueiro
-        
-        achievements["beijoqueiro"]?.check(condition: result.hasKissed == true, step: 10)
-        achievements["deuPt"]?.check(condition: self.attributes.insanityStats == 10, step: 10)
-        achievements["aluguel"]?.check(condition: self.attributes.moneyStats == 0, step: 10)
+        achievements["beijoqueiro"]?.check(condition: result.hasKissed == true, step: 20)
+        achievements["deuPt"]?.check(condition: self.attributes.insanityStats == 10, step: 100)
+        achievements["aluguel"]?.check(condition: !self.attributes.isGameOver() && self.attributes.moneyStats == 0, step: 100)
         achievements["homemChora"]?.check(condition: result.brokenHeart == true, step: 20)
-        
-        
-        //feioso
-        //achievements["feioso"]?.check(condition: result.hasKissed == false, step: 10, reset: result.hasKissed == true)
     
         
         do{
@@ -155,7 +157,6 @@ class GameEnvironment: ObservableObject {
             if let card = self.allCards.first(where: {
                 $0.uid == self.attributes.dependsFrom
             }){
-                print(self.attributes)
                 self.maxID -= 1
                 cards[maxID].change(new: card)
 
