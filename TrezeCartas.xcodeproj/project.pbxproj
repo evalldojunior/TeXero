@@ -26,6 +26,7 @@
 		3508A8C6260D19940069A9DF /* background_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3508A8B5260D18570069A9DF /* background_sound.wav */; };
 		3544852B261242E1009B3983 /* latinha.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3544852A261242E1009B3983 /* latinha.wav */; };
 		3544852F261242EC009B3983 /* latinha.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3544852A261242E1009B3983 /* latinha.wav */; };
+		3567D636261F7EFE0088B100 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3567D635261F7EFE0088B100 /* GameKit.framework */; };
 		3568617725F15EEC00C2B261 /* TeXeroNa13.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3568617625F15EEC00C2B261 /* TeXeroNa13.txt */; };
 		3597EE752614FBAB0052771B /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3597EE742614FBAB0052771B /* AchievementsView.swift */; };
 		35CF7C5E25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF7C5D25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift */; };
@@ -33,6 +34,8 @@
 		3E00D5F325F9290400BB0CC6 /* ExtensionClamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E00D5F225F9290400BB0CC6 /* ExtensionClamped.swift */; };
 		3E00D60725F92C4E00BB0CC6 /* ExtensionMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E00D60625F92C4E00BB0CC6 /* ExtensionMotion.swift */; };
 		3E1D712725FAAF80007A1A0E /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1D712625FAAF80007A1A0E /* ConfigurationView.swift */; };
+		3E638DB3261CF2D000BFA6A5 /* AchievementsEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E638DB2261CF2D000BFA6A5 /* AchievementsEnvironment.swift */; };
+		3E638DB8261CF30600BFA6A5 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E638DB7261CF30600BFA6A5 /* Achievement.swift */; };
 		3E8E227F26124C9600189EC4 /* DeckCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E227E26124C9600189EC4 /* DeckCoverView.swift */; };
 		3E8E22842612583400189EC4 /* LazySnapHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E22832612583400189EC4 /* LazySnapHStack.swift */; };
 		8908FAF325CDB48000D899D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908FAF225CDB48000D899D2 /* AppDelegate.swift */; };
@@ -82,6 +85,7 @@
 		3508A8BA260D18F50069A9DF /* card_shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = card_shuffle.wav; sourceTree = "<group>"; };
 		3508A8BF260D18FB0069A9DF /* card_flip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = card_flip.wav; sourceTree = "<group>"; };
 		3544852A261242E1009B3983 /* latinha.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = latinha.wav; sourceTree = "<group>"; };
+		3567D635261F7EFE0088B100 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		3568617625F15EEC00C2B261 /* TeXeroNa13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TeXeroNa13.txt; sourceTree = "<group>"; };
 		3597EE742614FBAB0052771B /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		35CF7C5D25F178D1000B4BE0 /* ExtensionReflectedStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionReflectedStringConvertible.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 		3E00D5F225F9290400BB0CC6 /* ExtensionClamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionClamped.swift; sourceTree = "<group>"; };
 		3E00D60625F92C4E00BB0CC6 /* ExtensionMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMotion.swift; sourceTree = "<group>"; };
 		3E1D712625FAAF80007A1A0E /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
+		3E638DB2261CF2D000BFA6A5 /* AchievementsEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsEnvironment.swift; sourceTree = "<group>"; };
+		3E638DB7261CF30600BFA6A5 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		3E8E227E26124C9600189EC4 /* DeckCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCoverView.swift; sourceTree = "<group>"; };
 		3E8E22832612583400189EC4 /* LazySnapHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazySnapHStack.swift; sourceTree = "<group>"; };
 		8908FAEF25CDB48000D899D2 /* TrezeCartas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrezeCartas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3567D636261F7EFE0088B100 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,10 +143,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3567D634261F7EFE0088B100 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3567D635261F7EFE0088B100 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3E00D5DC25F9269200BB0CC6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				0872A21225D30C0C00E2A466 /* Card.swift */,
+				3E638DB7261CF30600BFA6A5 /* Achievement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +199,7 @@
 				0894A10725D4B15C0007B370 /* GameEnvironment.swift */,
 				3508A8AF260D17550069A9DF /* AudioPreview.swift */,
 				FE7C579426124F21003D8FA1 /* CollageEnvironment.swift */,
+				3E638DB2261CF2D000BFA6A5 /* AchievementsEnvironment.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -206,6 +223,7 @@
 				8908FB0B25CDB48200D899D2 /* TrezeCartasTests */,
 				8908FB1625CDB48200D899D2 /* TrezeCartasUITests */,
 				8908FAF025CDB48000D899D2 /* Products */,
+				3567D634261F7EFE0088B100 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -412,11 +430,13 @@
 				8908FAFA25CDB48000D899D2 /* TrezeCartas.xcdatamodeld in Sources */,
 				3E8E22842612583400189EC4 /* LazySnapHStack.swift in Sources */,
 				3E1D712725FAAF80007A1A0E /* ConfigurationView.swift in Sources */,
+				3E638DB3261CF2D000BFA6A5 /* AchievementsEnvironment.swift in Sources */,
 				3E00D5EE25F928A000BB0CC6 /* ExtensionCornerRadius.swift in Sources */,
 				0872A21325D30C0C00E2A466 /* Card.swift in Sources */,
 				08EFE00425CF3BCD00086BFB /* ShakeGestureView.swift in Sources */,
 				3E00D60725F92C4E00BB0CC6 /* ExtensionMotion.swift in Sources */,
 				3E00D5F325F9290400BB0CC6 /* ExtensionClamped.swift in Sources */,
+				3E638DB8261CF30600BFA6A5 /* Achievement.swift in Sources */,
 				08CA4FB625D4955400BFE2BE /* EndGameView.swift in Sources */,
 				8908FAF325CDB48000D899D2 /* AppDelegate.swift in Sources */,
 				08966255260D278200C7E18A /* MenuDecksView.swift in Sources */,
@@ -650,7 +670,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P63952MS7L;
 				INFOPLIST_FILE = TrezeCartasTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -660,6 +683,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = academy.TrezeCartasTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrezeCartas.app/TrezeCartas";
@@ -671,7 +696,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P63952MS7L;
 				INFOPLIST_FILE = TrezeCartasTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -681,6 +709,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = academy.TrezeCartasTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrezeCartas.app/TrezeCartas";
