@@ -96,7 +96,7 @@ struct GameView: View {
                                         // Remove that card from our array
                                         if end {
                                             self.isPresentedGameOver.toggle()
-                                            
+                                            self.environment.checkWinAchievements(isGameWon: false)
                                             UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_key")
                                             //self.environment.reset()
                                         } else {
@@ -104,6 +104,7 @@ struct GameView: View {
                                             
                                             if environment.maxID == 0 {
                                                 self.isPresentedFinished.toggle()
+                                                self.environment.checkWinAchievements(isGameWon: true)
                                                 
                                                 UserDefaults.standard.setValue(true, forKey: "has_completed_onboarding_key")
                                                 //self.environment.reset()
@@ -285,6 +286,7 @@ struct GameView: View {
             .animation(.default)
         }
         .onChange(of: end, perform: { value in
+            self.environment.checkWinAchievements(isGameWon: false)
             if environment.attributes.isGameOver() {
                 self.description = environment.attributes.endGame ?? "Vacilou Grandão, mermão."
             } else if environment.attributes.healthStats == 0 {
@@ -312,6 +314,7 @@ struct GameView: View {
             if environment.attributes.insanityStats! == 10 {
                 self.description = "Viado, tu já desse pt de novo, foi? Melhor sorte no próximo carnaval, se não tiver pandemia."
                 self.isPresentedGameOver.toggle()
+                self.environment.checkWinAchievements(isGameWon: false)
                 
             }
             self.environment.objectWillChange.send()

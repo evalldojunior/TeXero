@@ -18,4 +18,5 @@ extension Color {
     static let rosaColor = Color(UIColor(named:"rosa")!)
     static let roxoClaroColor = Color(UIColor(named:"roxoClaro")!)
     static let pretoEscuroColor = Color(UIColor(named:"pretoEscuro")!)
+    static let verdeColor = Color(UIColor(named: "verdeColor")!)
 }
