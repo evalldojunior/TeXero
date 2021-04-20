@@ -11,6 +11,7 @@ struct FinalGameView: View {
     
     @Binding var shouldPopToRootView : Bool
     @ObservedObject var environment : GameEnvironment
+    @Binding var isPresentedFinished : Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -38,16 +39,79 @@ struct FinalGameView: View {
                     Spacer()
                 }
                 
-                VStack {
-                    Text("Toque para jogar novamente")
-                        .font(.subheadline)
-                        .fontWeight(.regular)
-                        .foregroundColor(.brancoColor)
-                        .multilineTextAlignment(.center)
-                        .padding()
+                VStack(alignment: .center){
+                    
                     Spacer()
-                        .frame(height: 60)
-                }
+                    
+                    Button(action: {
+                        self.isPresentedFinished.toggle()
+                    }, label: {
+                        HStack {
+                            Spacer()
+                            Text("Jogar Novamente")
+                                .font(.callout)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.brancoColor)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .padding(7)
+                            Spacer()
+                        }
+                        
+                    }).frame(height: 55)
+                    .clipped()
+                    .background(Color.rosaColor)
+                    .cornerRadius(10)
+                    
+//                    Button(action: {
+//                        // pop to root
+//                        //self.environment?.reset()
+//                        //print(gameViewIsActive)
+//                        //self.gameViewIsActive = false
+//                        //print(gameViewIsActive)
+//                    }, label: {
+//                        HStack {
+//                            Spacer()
+//                            Text("Ir para Coleção")
+//                                .font(.callout)
+//                                .fontWeight(.semibold)
+//                                .foregroundColor(.brancoColor)
+//                                .multilineTextAlignment(.center)
+//                                .lineLimit(2)
+//                                .padding(7)
+//                            Spacer()
+//                        }
+//
+//                    }).frame(height: 55)
+//                    .clipped()
+//                    .background(Color.azulColor)
+//                    .cornerRadius(10)
+//
+                    Button(action: {
+                        self.environment.reset()
+                        self.environment.objectWillChange.send()
+                        self.shouldPopToRootView = false
+                    }, label: {
+                        HStack {
+                            Spacer()
+                            Text("Retornar ao Menu Principal")
+                                .font(.callout)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.rosaColor)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .padding(7)
+                            Spacer()
+                        }
+                        
+                    }).frame(height: 55)
+                    .clipped()
+                    .background(Color.brancoColor)
+                    .cornerRadius(10)
+                    
+                }.padding()
+                .padding(.bottom, 10)
+                
                 
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
@@ -57,13 +121,6 @@ struct FinalGameView: View {
                     .scaledToFill()
             )
             .background(Color("roxoClaro"))
-            .onTapGesture {
-                //presentationMode.wrappedValue.dismiss()
-                self.environment.reset()
-                self.environment.objectWillChange.send()
-                self.shouldPopToRootView = false
-            }
-            
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .preferredColorScheme(.light)
