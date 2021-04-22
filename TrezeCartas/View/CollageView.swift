@@ -51,7 +51,7 @@ struct CollageView: View {
                                             .padding(.horizontal, -3)
                                             .frame(width: UIScreen.main.bounds.width * 0.4284)
                                         VStack {
-                                            Image(card.imageName)
+                                            Image(card.imageName!)
                                                 .resizable()
                                                 .scaledToFit()
                                                 .cornerRadius(10.0)

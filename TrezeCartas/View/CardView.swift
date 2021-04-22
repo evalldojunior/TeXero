@@ -148,7 +148,7 @@ struct CardView: View {
                         
                         VStack(alignment: .center) {
                             VStack {
-                                Image(card.imageName)
+                                Image(card.imageName!)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: self.getImageSize().0, height: self.getImageSize().1, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

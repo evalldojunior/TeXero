@@ -19,7 +19,8 @@ class CollageEnvironment: ObservableObject {
         
         do {
             let jsonData = try String(contentsOfFile: jsonPath, encoding: String.Encoding.utf8).data(using: String.Encoding.utf8)!
-            cards = try JSONDecoder().decode([JSONCard].self, from: jsonData)
+            let allCards = try JSONDecoder().decode([JSONCard].self, from: jsonData)
+            cards = allCards.filter{$0.imageName != nil}
             cards.remove(at: 1)
             
             if let discoveredCards = UserDefaults.standard.array(forKey: "has_discovered_cards_key") as? [Int] {

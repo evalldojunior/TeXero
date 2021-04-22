@@ -83,7 +83,7 @@ class JSONCard: Attributtes{
     var rightResult: String
     var rightResultText: String
     var leftResultText: String
-    var imageName: String
+    var imageName: String?
     
     
     enum CodingKeys: String, CodingKey {

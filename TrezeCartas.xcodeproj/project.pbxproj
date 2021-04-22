@@ -625,7 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TrezeCartas/Preview Content\"";
-				DEVELOPMENT_TEAM = SJND557DN4;
+				DEVELOPMENT_TEAM = P63952MS7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TrezeCartas/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -634,7 +634,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = academy.TrezeCartas;
+				PRODUCT_BUNDLE_IDENTIFIER = academy.TrezeCartass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -649,7 +649,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TrezeCartas/Preview Content\"";
-				DEVELOPMENT_TEAM = SJND557DN4;
+				DEVELOPMENT_TEAM = P63952MS7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TrezeCartas/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -658,7 +658,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = academy.TrezeCartas;
+				PRODUCT_BUNDLE_IDENTIFIER = academy.TrezeCartass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

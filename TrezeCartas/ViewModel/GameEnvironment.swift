@@ -52,7 +52,9 @@ class GameEnvironment: ObservableObject {
 
         do {
             let jsonData = try String(contentsOfFile: jsonPath, encoding: String.Encoding.utf8).data(using: String.Encoding.utf8)!
-            allCards = try JSONDecoder().decode([JSONCard].self, from: jsonData)
+            
+            let jsonCards = try JSONDecoder().decode([JSONCard].self, from: jsonData)
+            self.allCards = jsonCards.filter{$0.imageName != nil}
             
             let initialCard: JSONCard
             let idToAdd: Int
@@ -152,8 +154,8 @@ class GameEnvironment: ObservableObject {
     
     func changeCardPriority(){
         //AudioPreview.shared.play(name: "card_flip", volume: 0.14, delay: 0)
-
-      if self.attributes.dependsFrom != nil{
+        
+        if self.attributes.dependsFrom != nil{
             if let card = self.allCards.first(where: {
                 $0.uid == self.attributes.dependsFrom
             }){
